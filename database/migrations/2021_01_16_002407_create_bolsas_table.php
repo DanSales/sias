@@ -16,6 +16,8 @@ class CreateBolsasTable extends Migration
         Schema::create('bolsas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date("data_pagamento")->nullable(false);
+
         });
     }
 

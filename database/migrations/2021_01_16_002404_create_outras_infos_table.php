@@ -16,6 +16,8 @@ class CreateOutrasInfosTable extends Migration
         Schema::create('outras_infos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("atividade")->nullable(false);
+            $table->decimal("renda")->nullable(false);
         });
     }
 

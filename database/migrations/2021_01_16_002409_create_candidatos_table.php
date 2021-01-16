@@ -16,6 +16,8 @@ class CreateCandidatosTable extends Migration
         Schema::create('candidatos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("relato_familiar");
+            $table->string("declaracao_rendimento");
         });
     }
 

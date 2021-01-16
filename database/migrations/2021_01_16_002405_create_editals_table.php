@@ -16,6 +16,9 @@ class CreateEditalsTable extends Migration
         Schema::create('editals', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date("data_edital")->nullable(false);
+            $table->string("numero_edital")->nullable(false);
+            $table->string("arquivo_edital")->nullable(false);
         });
     }
 

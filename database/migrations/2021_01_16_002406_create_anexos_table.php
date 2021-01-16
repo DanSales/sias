@@ -16,6 +16,7 @@ class CreateAnexosTable extends Migration
         Schema::create('anexos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("caminho_arquivo")->nullable(false);
         });
     }
 

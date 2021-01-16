@@ -16,6 +16,13 @@ class CreateFamiliasTable extends Migration
         Schema::create('familias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("cpf")->nullable(true);
+            $table->date("data_nascimento")->nullable(false);
+            $table->string("declaracao_autonomo")->nullable(true);
+            $table->string("declaracao_agricultor")->nullable(true);
+            $table->string("escolaridade")->nullable(false);
+            $table->decimal("renda_mensal")->nullable(false);
+            $table->string("profissao")->nullable(false);
         });
     }
 
