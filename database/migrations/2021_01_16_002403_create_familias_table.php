@@ -23,6 +23,8 @@ class CreateFamiliasTable extends Migration
             $table->string("escolaridade")->nullable(false);
             $table->decimal("renda_mensal")->nullable(false);
             $table->string("profissao")->nullable(false);
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
