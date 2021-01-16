@@ -22,6 +22,8 @@ class CreateSaudesTable extends Migration
             $table->boolean("flag_dificuldade")->nullable(false);
             $table->boolean("flag_deficiencia")->nullable(false);
             $table->decimal("valor_plano")->nullable(true);
+            $table->unsignedInteger('familia_id');
+            $table->foreign('familia_id')->references('id')->on('familias');
         });
     }
 

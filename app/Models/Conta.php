@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Conta extends Model
 {
     use HasFactory;
+    
+    public function bolsas()
+    {
+        return $this->hasMany('App\Models\Bolsa');
+    }
 }

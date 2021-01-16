@@ -22,6 +22,8 @@ class CreateContasTable extends Migration
             $table->string("tipo_conta")->nullable(false);
             $table->string("numero_conta")->nullable(false);
             $table->boolean("ativa")->nullable(false);
+            $table->unsignedInteger('beneficiario_id');
+            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
         });
     }
 

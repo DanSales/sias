@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     use HasFactory;
+    
+    public function bolsas()
+    {
+        return $this->hasOne('App\Models\Bolsa');
+    }
+    public function editals()
+    {
+        return $this->hasMany('App\Models\Edital');
+    }
+    public function anexos()
+    {
+        return $this->hasMany('App\Models\Anexo');
+    }
 }
