@@ -19,6 +19,8 @@ class CreateEditalsTable extends Migration
             $table->date("data_edital")->nullable(false);
             $table->string("numero_edital")->nullable(false);
             $table->string("arquivo_edital")->nullable(false);
+            $table->unsignedInteger('programa_id');
+            $table->foreign('programa_id')->references('id')->on('programas');
         });
     }
 

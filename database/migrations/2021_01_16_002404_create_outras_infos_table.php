@@ -18,6 +18,8 @@ class CreateOutrasInfosTable extends Migration
             $table->timestamps();
             $table->string("atividade")->nullable(false);
             $table->decimal("renda")->nullable(false);
+            $table->unsignedInteger('familia_id');
+            $table->foreign('familia_id')->references('id')->on('familias');
         });
     }
 
