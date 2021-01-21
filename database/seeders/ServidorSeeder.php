@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Servidor;
 use Illuminate\Database\Seeder;
 
 class ServidorSeeder extends Seeder
@@ -13,6 +14,6 @@ class ServidorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Servidor::factory(7)->create();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Beneficiario;
 use Illuminate\Database\Seeder;
 
 class BeneficiarioSeeder extends Seeder
@@ -13,6 +14,6 @@ class BeneficiarioSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Beneficiario::factory(5)->create();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Edital;
 use Illuminate\Database\Seeder;
 
 class EditalSeeder extends Seeder
@@ -13,6 +14,6 @@ class EditalSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Edital::factory(30)->create();
     }
 }

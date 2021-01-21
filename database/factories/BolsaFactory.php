@@ -22,7 +22,9 @@ class BolsaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'data_pagamento' => $this->faker->date(),
+            'conta_id' => $this->faker->numberBetween(1,10),
+            'programa_id' => $this->faker->numberBetween(1,15)
         ];
     }
 }

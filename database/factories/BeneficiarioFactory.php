@@ -22,7 +22,7 @@ class BeneficiarioFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->unique(true)->numberBetween(1,20)
         ];
     }
 }

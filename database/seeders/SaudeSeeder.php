@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Saude;
 use Illuminate\Database\Seeder;
 
 class SaudeSeeder extends Seeder
@@ -13,6 +14,6 @@ class SaudeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Saude::factory(80)->create();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\OutrasInfo;
 use Illuminate\Database\Seeder;
 
 class OutrasInfoSeeder extends Seeder
@@ -13,6 +14,6 @@ class OutrasInfoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        OutrasInfo::factory(100)->create();
     }
 }

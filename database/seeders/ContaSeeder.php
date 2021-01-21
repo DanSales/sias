@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Conta;
 use Illuminate\Database\Seeder;
 
 class ContaSeeder extends Seeder
@@ -13,6 +14,6 @@ class ContaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Conta::factory(10)->create();
     }
 }

@@ -22,7 +22,9 @@ class CandidatoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'relato_familiar' => $this->faker->file('/home/igor/git/sias/storage/files','/tmp/seeders',true),
+            'declaracao_rendimento' => $this->faker->file('/home/igor/git/sias/storage/files','/tmp/seeders',true),
+            'user_id' => $this->faker->unique(true)->numberBetween(1,20),
         ];
     }
 }
