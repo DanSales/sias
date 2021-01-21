@@ -22,7 +22,7 @@ class AnexoFactory extends Factory
     public function definition()
     {
         return [
-            'caminho_arquivo' => $this->faker->file('/home/igor/git/sias/storage/files','/tmp/seeders',true),
+            'caminho_arquivo' => $this->faker->file('/tmp','/tmp/seeders',true),
             'programa_id' => $this->faker->numberBetween(1,15)
         ];
     }
