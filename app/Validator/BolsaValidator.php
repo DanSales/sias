@@ -11,7 +11,7 @@ class BolsaValidator
     public static function validate($data){
         $validator = \Validator::make($data, Bolsa::rules, Bolsa::messages);
         if(!$validator->erros->isEmpty()){
-            throw new ValidationException($validator, "Erro na validação do Beneficiario");
+            throw new ValidationException($validator, "Erro na validação do Bolsa");
         }
         return $validator;
     }
