@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\ListarBeneficiarioController;
+use \App\Http\Controllers\AdicionarBeneficiarioController;
+use \App\Http\Controllers\RemoverBeneficiarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/listar/beneficiarios', [ListarBeneficiarioController::class, 'listar']);
+
+Route::get('/adicionar/beneficiarios', [AdicionarBeneficiarioController::class, 'inicio']);
+
+Route::get('/adicionar/beneficiarios/{id}', [AdicionarBeneficiarioController::class, 'adicionar']);
+
+Route::get('/remover/beneficiarios/{id}', [RemoverBeneficiarioController::class, 'remover']);
