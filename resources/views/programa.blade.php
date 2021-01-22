@@ -22,6 +22,7 @@
             <tr>
                <th>Descrição</th>
                <th>Valor do Benefício</th>
+                <th></th>
                <th></th>
                <th></th>
             </tr>
@@ -31,8 +32,9 @@
                 <tr >
                     <td>{{$p->descricao}}</td>
                     <td>{{$p->valor_beneficio}}</td>
+                    <td> <a href="{{route('listAnexos', ['id' => $p->id])}}">Anexos</a></td>
                     <td><a>Atualizar</a></td>
-                    <td><a href="/programa/delete/{{$p->id}}">Deletar</a></td>
+                    <td><a href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
                 </tr>
             @endforeach
 

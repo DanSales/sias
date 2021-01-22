@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
+use App\Http\Controllers\AnexoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +24,10 @@ Route::get('/programa/update/{id?}', [ProgramaController::class, 'update'])->nam
 Route::post('/programa/update/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
 Route::get('/programa/delete/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
 Route::get('/programa', [ProgramaController::class, 'list'])->name('listPrograma');
+
+Route::get('/programa/{id?}/anexos', [AnexoController::class, 'listAnexos'])->name('listAnexos');
+Route::post('/programa/{id?}/anexos/new', [AnexoController::class, 'createAnexo'])->name('createAnexo');
+Route::get('/programa/{id?}/anexos/delete/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
+
 
 
