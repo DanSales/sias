@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     use HasFactory;
-    
+    protected $fillable = ['descricao', 'valor_beneficio'];
+
     public function bolsas()
     {
         return $this->hasOne('App\Models\Bolsa');

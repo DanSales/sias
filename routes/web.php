@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProgramaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/programa/new', [ProgramaController::class, 'create'])->name('createPrograma');
+Route::get('/programa/update/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
+Route::post('/programa/update/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
+Route::get('/programa/delete/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
+Route::get('/programa', [ProgramaController::class, 'list'])->name('listPrograma');
+
+
