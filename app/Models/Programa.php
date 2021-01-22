@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     use HasFactory;
+    protected $fillable = ['descricao', 'valor_beneficio'];
 
     public static $rules = ['valor_beneficio' => 'required|numeric',
         'descricao' => 'required|min:20|max:180'
