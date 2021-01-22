@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     use HasFactory;
-    
+
+    public static $rules = ['valor_beneficio' => 'required|numeric',
+        'descricao' => 'required|min:20|max:180'
+    ];
+    public static $messages = ['valor_beneficio' => 'O valor do beneficio é obrigatório e deve ser numerico',
+        'descricao' => 'A descrição é obrigatória e deve ser um texto'
+    ];
+
     public function bolsas()
     {
         return $this->hasOne('App\Models\Bolsa');
