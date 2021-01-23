@@ -18,6 +18,7 @@ class CreateBeneficiariosTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -29,5 +30,6 @@ class CreateBeneficiariosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('beneficiarios');
+        Schema::dropSoftDeletes('beneficiarios');
     }
 }
