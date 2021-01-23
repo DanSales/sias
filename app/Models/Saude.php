@@ -16,12 +16,12 @@ class Saude extends Model
         'valor_plano'=>'required|numeric',
         'familia_id'=>'required'
     ];
-    public static $messages = ['despesa_mensal' => 'A despesa mensal é obrigatória e deve ser um arquivo',
-        'flag_plano' => 'A resposta do plano é obrigatória',
-        'flag_doenca'=>'A resposta da doença é obrigatória',
-        'flag_dificuldade'=>'A resposta da dificuldade é obrigatória',
-        'flag_deficiencia'=>'A resposta da deficiencia é obrigatória',
-        'valor_plano'=>'O valor do plano é obrigatóro e númerico',
-        'familia_id'=>'O id da familia é obrigatório'
+    public static $messages = ['despesa_mensal.*' => 'A despesa mensal é obrigatória e deve ser um arquivo',
+        'flag_plano.*' => 'A resposta do plano é obrigatória',
+        'flag_doenca.*'=>'A resposta da doença é obrigatória',
+        'flag_dificuldade.*'=>'A resposta da dificuldade é obrigatória',
+        'flag_deficiencia.*'=>'A resposta da deficiencia é obrigatória',
+        'valor_plano.*'=>'O valor do plano é obrigatóro e númerico',
+        'familia_id.*'=>'O id da familia é obrigatório'
     ];
 }

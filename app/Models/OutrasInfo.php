@@ -15,7 +15,7 @@ class OutrasInfo extends Model
 
     ];
     public static $messages = ['atividade' => 'A atividade é obrigatória e deve ter entre 10 e 100 caracteres',
-        'renda' => 'A renda é obrigatória e deve ser numérica',
-        'familia_id' => 'O id da familia é obrigatório'
+        'renda.*' => 'A renda é obrigatória e deve ser numérica',
+        'familia_id.*' => 'O id da familia é obrigatório'
     ];
 }

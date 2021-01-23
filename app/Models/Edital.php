@@ -15,10 +15,10 @@ class Edital extends Model
         'programa_id' => 'required'
 
     ];
-    public static $messages = ['data_edital' => 'A data do edital é obrigatória e deve ser em formato de data',
-        'numero_edital' => 'O número do edital é obrigatório e deve ser numérico',
-        'arquivo_edital' => 'O arquivo do edital é obrigatório e deve ser um arquivo',
-        'programa_id' => 'O id do programa é obrigatório'
+    public static $messages = ['data_edital.*' => 'A data do edital é obrigatória e deve ser em formato de data',
+        'numero_edital.*' => 'O número do edital é obrigatório e deve ser numérico',
+        'arquivo_edital.*' => 'O arquivo do edital é obrigatório e deve ser um arquivo',
+        'programa_id.*' => 'O id do programa é obrigatório'
     ];
 
     public function users()

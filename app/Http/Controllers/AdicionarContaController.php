@@ -13,7 +13,17 @@ class AdicionarContaController extends Controller
     }
     
     public function adicionar(Request $request){
-    	Conta::create($request->all());
-    	return redirect("/listar/contas");
+    	try{
+    		\App\Validator\ContaValidator::validate($request->all());
+    		Conta::create($request->all());
+    		return redirect("/listar/contas");
+    	
+    	} catch(\App\Validator\ValidationException $exception){
+    		$beneficiarios = DB::select("select * from beneficiarios");
+    		return redirect("/adicionar/contas")
+    			->with(['beneficiarios' => $beneficiarios])
+    			->withErrors($exception->getValidator())
+    			->withInput();
+    	}
     }
 }

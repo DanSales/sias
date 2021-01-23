@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class ListarBeneficiarioController extends Controller
 {
     public function listar(){
-        $beneficiarios = DB::select("select * from beneficiarios");
+        $beneficiarios = DB::select("SELECT * FROM beneficiarios WHERE deleted_at IS NULL");
         $datas = array();
         foreach($beneficiarios as $beneficiario){
         	$user = User::where('id', '=', $beneficiario->user_id)->first();

@@ -11,7 +11,7 @@ class Anexo extends Model
     public static $rules = ['caminho_arquivo' => 'required|file',
                             'programa_id' => 'required'
     ];
-    public static $messages = ['caminho_arquivo' => 'O caminho é obrigatório e deve ser um arquivo',
+    public static $messages = ['caminho_arquivo.*' => 'O caminho é obrigatório e deve ser um arquivo',
         'programa_id.*' => 'O campo id do programa é obrigatório'
     ];
 }

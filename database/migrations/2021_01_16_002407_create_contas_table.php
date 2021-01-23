@@ -24,6 +24,7 @@ class CreateContasTable extends Migration
             $table->boolean("ativa")->nullable(false);
             $table->unsignedInteger('beneficiario_id');
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -35,5 +36,6 @@ class CreateContasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('contas');
+        Schema::dropSoftDeletes('contas');
     }
 }
