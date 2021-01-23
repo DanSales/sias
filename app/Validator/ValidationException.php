@@ -15,4 +15,7 @@ class ValidationException extends Exception
         parent::__construct($text);
         $this->validator = $validator;
     }
+    public function getValidator(){
+    	return $this->validator;
+    }
 }

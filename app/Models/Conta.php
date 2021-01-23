@@ -20,13 +20,13 @@ class Conta extends Model
         'beneficiario_id' => 'required'
 
     ];
-    public static $messages = ['agencia' => 'A agência é obrigatória e deve ser numérica',
-        'banco' => 'O banco é obrigatório',
-        'codigo_banco' => 'O cod do banco é obrigatório e deve ser numérico',
-        'tipo_conta' => 'O tipo de conta é obrigatório',
-        'numero_conta' => 'O numéro da conta é obrigatório e deve ser númerico',
-        'ativa' => 'Deve escolher se a conta está ativa',
-        'beneficiario_id' => 'O id do beneficiario é obrigatório'
+    public static $messages = ['agencia.*' => 'A agência é obrigatória e deve ser numérica',
+        'banco.*' => 'O banco é obrigatório',
+        'codigo_banco.*' => 'O cod do banco é obrigatório e deve ser numérico',
+        'tipo_conta.*' => 'O tipo de conta é obrigatório',
+        'numero_conta.*' => 'O numéro da conta é obrigatório e deve ser númerico',
+        'ativa.*' => 'Deve escolher se a conta está ativa',
+        'beneficiario_id.*' => 'O id do beneficiario é obrigatório'
     ];
 
     public function bolsas()

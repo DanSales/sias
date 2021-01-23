@@ -12,8 +12,8 @@ class Bolsa extends Model
         'conta_id' => 'required',
         'programa_id'=>'required'
     ];
-    public static $messages = ['data_pagamento' => 'A data de pagamento é obrigatória e deve estar em formato de data',
-        'conta_id' => 'O id da conta é obrigatório',
-        'programa_id'=>'O id do programa é obrigatório'
+    public static $messages = ['data_pagamento.*' => 'A data de pagamento é obrigatória e deve estar em formato de data',
+        'conta_id.*' => 'O id da conta é obrigatório',
+        'programa_id.*'=>'O id do programa é obrigatório'
     ];
 }

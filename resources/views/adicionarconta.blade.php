@@ -10,22 +10,70 @@
     	<h1>Adicionar Conta</h1>
         <form method="post">
         	@csrf
-        	Agencia: <input type="text" name="agencia" /> <br>
-        	Banco: <input type="text" name="banco" /> <br>
-        	Codigo do Banco: <input type="text" name="codigo_banco" /> <br>
-        	Tipo de Conta: <input type="text" name="tipo_conta" /> <br>
-        	Numero da Conta:<input type="text" name="numero_conta" /><br>
+        	Agencia: <input id = "agencia" type="text"class="form-control @error('agencia') is-invalid @enderror" name="agencia" value ="{{ old('agencia')}}" required autofocus/> <br>
+        	@error('agencia')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
+        	Banco: <input id="banco" type="text" class="form-control @error('banco') is-invalid @enderror" name="banco" value ="{{ old('banco')}}" required autofocus/> <br>
+        	@error('banco')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
+        	Codigo do Banco: <input id="codigo_banco" type="text" class="form-control @error('codigo_banco') is-invalid @enderror" name="codigo_banco" value ="{{ old('codigo_banco')}}" required autofocus/> <br>
+        	@error('codigo_banco')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
+        	Tipo de Conta: <input id="tipo_conta" type="text" class="form-control @error('tipo_conta') is-invalid @enderror" name="tipo_conta" value ="{{ old('tipo_conta')}}" required autofocus/> <br>
+        	@error('tipo_conta')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
+        	Numero da Conta:<input id="numero_conta" type="text" class="form-control @error('numero_conta') is-invalid @enderror" name="numero_conta" value ="{{ old('numero_conta')}}" required autofocus/><br>
+        	@error('numero_conta')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
         	<label for="ativa">Ativa</label>
-        	<select name="ativa" id="Ativa">
-		  <option value="TRUE">Sim</option>
-		  <option value="FALSE">Nao</option>
-		</select> <br>
-		<label for="beneficiario_id">Beneficiario</label>
-        	<select name="beneficiario_id" id="beneficiario_id">
-			  @foreach($beneficiarios as $beneficiario)
-			  	<option value={{$beneficiario->id}}>{{$beneficiario->id}}</option><>
-			  @endforeach
-		</select><br>
+        	<select name="ativa" id="Ativa" class="form-control @error('ativa') is-invalid @enderror">
+        		@if(old('ativa') == "TRUE")
+		  			<option value="TRUE" selected='selected'>Sim</option>
+		  			<option value="FALSE">Nao</option>
+		  		@elseif(old('ativa')=="FALSE")
+		  			<option value="TRUE">Sim</option>
+		  			<option value="FALSE" selected='selected'>Nao</option>
+		  		@else
+		  			<option value="TRUE">Sim</option>
+		  			<option value="FALSE">Nao</option>
+		  		@endif
+			</select> <br>
+			@error('ativa')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
+			<label for="beneficiario_id">Beneficiario</label>
+		    <select name="beneficiario_id" id="beneficiario_id" class="form-control @error('beneficiario_id') is-invalid @enderror">
+		    	<option value="">Escolha um Beneficiario</option>
+				@foreach($beneficiarios as $beneficiario)
+					@if(old('beneficiario_id') == $beneficiario->id)
+						<option value="{{$beneficiario->id}}" selected='selected'>{{$beneficiario->id}}</option>
+					@else
+						<option value="{{$beneficiario->id}}">{{$beneficiario->id}}</option>
+					@endif
+				@endforeach
+			</select><br>
+			@error('beneficiario_id')
+        	<span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        	@enderror
         	<input type="submit" value="cadastrar"/>
         </form>
     </body>
