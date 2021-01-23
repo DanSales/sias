@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Candidato;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CandidatoFactory extends Factory
@@ -24,7 +25,9 @@ class CandidatoFactory extends Factory
         return [
             'relato_familiar' => $this->faker->file('/tmp','/tmp/seeders',true),
             'declaracao_rendimento' => $this->faker->file('/tmp','/tmp/seeders',true),
-            'user_id' => $this->faker->unique(true)->numberBetween(1,20),
+            'user_id' => function(){
+                return self::factoryForModel('User')->create(['tipo_usuario' => 1])->id;
+            }
         ];
     }
 }

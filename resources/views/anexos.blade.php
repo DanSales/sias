@@ -12,7 +12,13 @@
 
 <form method="post" action="{{route('createAnexo', ['id' => $programa->id])}}" enctype="multipart/form-data">
     @csrf
-    <input type="file" name="arquivo" id="arquivo">
+
+    <input type="file" name="caminho_arquivo" id="arquivo" @error('caminho_arquivo') is-invalid @enderror" value ="{{ old('caminho_arquivo')}}" required autofocus>
+    @error('caminho_arquivo')
+    <span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+    @enderror
     <input type="hidden" value="{{$programa->id}}" name="programa_id">
     <input type="submit" value="Cadastrar">
 </form>

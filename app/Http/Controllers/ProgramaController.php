@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programa;
+use App\Validator\ValidationException;
 use Illuminate\Http\Request;
+use App\Validator\ProgramaValidator;
 
 class ProgramaController extends Controller
 {
     public function create(Request $request){
-        Programa::create($request->all());
-        return redirect('/programa');
+        try {
+            ProgramaValidator::validate($request->all());
+            Programa::create($request->all());
+            return redirect('/programa');
+        } catch (ValidationException $ve){
+            $programas = Programa::all();
+            return redirect('/programa')
+                ->with(['programas' => $programas])
+                ->withErrors($ve->getValidator())
+                ->withInput();
+        }
+
     }
 
     public function update(){

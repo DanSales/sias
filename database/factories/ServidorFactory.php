@@ -22,7 +22,9 @@ class ServidorFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->unique(true)->numberBetween(1,20),
+            'user_id' => function(){
+                return self::factoryForModel('User')->create(['tipo_usuario' => 3])->id;
+            }
         ];
     }
 }

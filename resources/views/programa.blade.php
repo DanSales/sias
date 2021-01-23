@@ -11,8 +11,20 @@
     <h1>Cadastrar Programa</h1>
     <form method="post" action="{{route('createPrograma')}}">
         @csrf
-        Descrição: <input type="text" name="descricao"><br>
-        Valor do Benefício: <input type="text" name="valor_beneficio"><br>
+
+        Descrição: <input type="text" name="descricao" @error('descricao') is-invalid @enderror" value ="{{ old('descricao')}}" required autofocus><br>
+        @error('descricao')
+        <span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        @enderror
+
+        Valor do Benefício: <input type="text" name="valor_beneficio" @error('valor_beneficio') is-invalid @enderror" value ="{{ old('valor_beneficio')}}" required autofocus><br>
+        @error('valor_beneficio')
+        <span class="invalid-feedback" role="alert">
+        		<strong>{{$message}}</strong><br>
+        	</span>
+        @enderror
         <input type="submit" value="Cadastrar">
     </form>
 
