@@ -10,7 +10,7 @@ class AdicionarBeneficiarioController extends Controller
 {
 
 	public function inicio(){
-		$datas = DB::select("SELECT * FROM users WHERE tipo_usuario = '2'");
+		$datas = DB::select("SELECT * FROM users WHERE tipo_usuario = '1'");
 		return view("adicionarbeneficiario", ['datas' => $datas]);
 	}
 	public function adicionar($id){
@@ -18,7 +18,7 @@ class AdicionarBeneficiarioController extends Controller
 		$beneficiario->user_id = $id;
 		$beneficiario->save();
 		$user = User::where('id', '=', $beneficiario->user_id)->first();
-		$user->tipo_usuario = 3;
+		$user->tipo_usuario = 2;
 		$user->save();
 		return redirect("/listar/beneficiarios");
 		

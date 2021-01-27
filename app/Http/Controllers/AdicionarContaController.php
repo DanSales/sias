@@ -8,7 +8,7 @@ use App\Models\Conta;
 class AdicionarContaController extends Controller
 {
     public function inicio(){
-    	$beneficiarios = DB::select("select * from beneficiarios");
+    	$beneficiarios = DB::select("select * from beneficiarios where deleted_at IS NULL");
     	return view('adicionarconta', ['beneficiarios' => $beneficiarios]);
     }
     
@@ -19,7 +19,7 @@ class AdicionarContaController extends Controller
     		return redirect("/listar/contas");
     	
     	} catch(\App\Validator\ValidationException $exception){
-    		$beneficiarios = DB::select("select * from beneficiarios");
+    		$beneficiarios = DB::select("select * from beneficiarios where deleted_at IS NULL");
     		return redirect("/adicionar/contas")
     			->with(['beneficiarios' => $beneficiarios])
     			->withErrors($exception->getValidator())
