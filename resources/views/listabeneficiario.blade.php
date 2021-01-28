@@ -9,7 +9,7 @@
     <body>
         <ul>
         	@foreach($datas as $data)
-        		<li>{{$data->nome_completo}}<a href="/remover/beneficiarios/{{$data->id}}">Remover Beneficiario</a></li>
+        		<li>{{$data->nome_completo}}<a href="/beneficiarios/remover/{{$data->id}}">Remover Beneficiario</a></li>
         	@endforeach
         </ul>
     </body>
