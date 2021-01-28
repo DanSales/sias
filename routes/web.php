@@ -3,13 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AnexoController;
-
-use \App\Http\Controllers\ListarBeneficiarioController;
-use \App\Http\Controllers\AdicionarBeneficiarioController;
-use \App\Http\Controllers\RemoverBeneficiarioController;
-use \App\Http\Controllers\ListarContaController;
-use \App\Http\Controllers\AdicionarContaController;
-use \App\Http\Controllers\RemoverContaController;
+use \App\Http\Controllers\BeneficiarioController;
+use \App\Http\Controllers\ContaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,19 +31,17 @@ Route::post('/programa/{id?}/anexos/new', [AnexoController::class, 'createAnexo'
 Route::get('/programa/{id?}/anexos/delete/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
 
 
-Route::get('/listar/beneficiarios', [ListarBeneficiarioController::class, 'listar']);
+Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar']);
+Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio']);
+Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar']);
+Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover']);
 
-Route::get('/adicionar/beneficiarios', [AdicionarBeneficiarioController::class, 'inicio']);
+Route::get('/contas/adicionar', [ContaController::class, 'inicio']);
+Route::post('/contas/adicionar', [ContaController::class, 'adicionar']);
+Route::get('/contas/', [ContaController::class, 'listar']);
+Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
 
-Route::get('/adicionar/beneficiarios/{id}', [AdicionarBeneficiarioController::class, 'adicionar']);
 
-Route::get('/remover/beneficiarios/{id}', [RemoverBeneficiarioController::class, 'remover']);
+Auth::routes();
 
-Route::get('/adicionar/contas', [AdicionarContaController::class, 'inicio']);
-
-Route::post('/adicionar/contas', [AdicionarContaController::class, 'adicionar']);
-
-Route::get('/listar/contas', [ListarContaController::class, 'listar']);
-
-Route::get('/remover/contas/{id}', [RemoverContaController::class, 'remover']);
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
