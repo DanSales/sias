@@ -10,7 +10,7 @@
     	<h1>Alterar Candidatos para Beneficiarios</h1>
         <ul>
         	@foreach($datas as $data)
-        		<li>{{$data->nome_completo}}<a href="/adicionar/beneficiarios/{{$data->id}}">Tornar Beneficiario</a></li>
+        		<li>{{$data->nome_completo}}<a href="/beneficiarios/adicionar/{{$data->id}}">Tornar Beneficiario</a></li>
         	@endforeach
         </ul>
     </body>

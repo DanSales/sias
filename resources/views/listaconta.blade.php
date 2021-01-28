@@ -9,7 +9,7 @@
     <body>
         <ul>
         	@foreach($contas as $conta)
-        		<li>{{$conta->banco}}<a href="/remover/contas/{{$conta->id}}">Remover Conta</a></li>
+        		<li>{{$conta->banco}}<a href="/contas/remover/{{$conta->id}}">Remover Conta</a></li>
         	@endforeach
         </ul>
     </body>
