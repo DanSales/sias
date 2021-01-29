@@ -5,6 +5,7 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AnexoController;
 use \App\Http\Controllers\BeneficiarioController;
 use \App\Http\Controllers\ContaController;
+use \App\Http\Controllers\ServidorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +46,27 @@ Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/servidors/', [ServidorController::class, 'listar']);
+Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
+Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
+
+

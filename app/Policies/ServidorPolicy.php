@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Conta;
+use App\Models\Servidor;
 use App\Models\User;
-use App\Models\Beneficiario;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ContaPolicy
+class ServidorPolicy
 {
     use HandlesAuthorization;
 
@@ -26,12 +25,12 @@ class ContaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Conta  $conta
+     * @param  \App\Models\Servidor  $servidor
      * @return mixed
      */
     public function view(User $user)
     {
-        return \Auth::user()->tipo_usuario == 2;
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
@@ -42,47 +41,44 @@ class ContaPolicy
      */
     public function create(User $user)
     {
-        return \Auth::user()->tipo_usuario == 2;
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Conta  $conta
+     * @param  \App\Models\Servidor  $servidor
      * @return mixed
      */
-    public function update(User $user, Conta $conta)
+    public function update(User $user, Servidor $servidor)
     {
-        if(\Auth::user()->tipo_usuario !=  2){
-            return false;
+        if(\Auth::user()->id == $servidor->user_id){
+            return true;
         }
-        return \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Conta  $conta
+     * @param  \App\Models\Servidor  $servidor
      * @return mixed
      */
-    public function delete(User $user, Conta $conta)
+    public function delete(User $user, Servidor $servidor)
     {
-        if(\Auth::user()->tipo_usuario !=  2){
-            return false;
-        }
-        return \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Conta  $conta
+     * @param  \App\Models\Servidor  $servidor
      * @return mixed
      */
-    public function restore(User $user, Conta $conta)
+    public function restore(User $user, Servidor $servidor)
     {
         //
     }
@@ -91,10 +87,10 @@ class ContaPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Conta  $conta
+     * @param  \App\Models\Servidor  $servidor
      * @return mixed
      */
-    public function forceDelete(User $user, Conta $conta)
+    public function forceDelete(User $user, Servidor $servidor)
     {
         //
     }
