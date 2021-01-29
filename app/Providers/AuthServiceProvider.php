@@ -8,6 +8,8 @@ use App\Models\Conta;
 use App\Policies\ContaPolicy;
 use App\Models\Beneficiario;
 use App\Policies\BeneficiarioPolicy;
+use App\Models\Servidor;
+use App\Policies\ServidorPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Conta::class => ContaPolicy::class,
         Beneficiario::class => BeneficiarioPolicy::class,
+        Servidor::class => ServidorPolicy::class,
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

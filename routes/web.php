@@ -5,6 +5,7 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AnexoController;
 use \App\Http\Controllers\BeneficiarioController;
 use \App\Http\Controllers\ContaController;
+use \App\Http\Controllers\ServidorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,5 +64,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
+
+Route::get('/servidors/', [ServidorController::class, 'listar']);
+Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
+Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
 
 
