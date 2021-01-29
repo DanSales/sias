@@ -62,7 +62,7 @@ Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
  * */
 
 Route::get('/contas/{idConta}/bolsas/', [BolsaController::class, 'listBolsaBeneficiario'])->name('listBolsaBeneficiario');
-Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listarBolsasPrograma'])->name('listBolsaPrograma');
+Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasPrograma'])->name('listBolsaPrograma');
 
 Auth::routes();
 
