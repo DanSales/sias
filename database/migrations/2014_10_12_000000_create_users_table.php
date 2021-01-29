@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string("nome_completo")->nullable(false);
             $table->string("cpf")->nullable(false);
-            $table->date("data_nascimento")->nullable(false);
+            $table->string("data_nascimento")->nullable(false);
             $table->string("endereco")->nullable(false);
             $table->string("tipo_usuario")->nullable(false);
         });

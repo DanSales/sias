@@ -45,3 +45,23 @@ Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
