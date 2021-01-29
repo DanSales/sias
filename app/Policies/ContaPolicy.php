@@ -57,7 +57,7 @@ class ContaPolicy
         if(\Auth::user()->tipo_usuario !=  2){
             return false;
         }
-        return \Auth::user()->beneficiario->id == $conta->beneficiario_id;
+        return \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
     }
 
     /**
@@ -72,7 +72,7 @@ class ContaPolicy
         if(\Auth::user()->tipo_usuario !=  2){
             return false;
         }
-        return \Auth::user()->beneficiario->id == $conta->beneficiario_id;
+        return \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
     }
 
     /**
