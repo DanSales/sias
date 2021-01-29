@@ -5,14 +5,14 @@ use App\Models\Beneficiario;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class BeneficiarioController extends Controller
+class  BeneficiarioController extends Controller
 {
     public function inicio(){
         $this->authorize("create", \App\Models\Beneficiario::class);
 		$datas = DB::select("SELECT * FROM users WHERE tipo_usuario = '1'");
 		return view("adicionarbeneficiario", ['datas' => $datas]);
 	}
-	
+
 	public function adicionar($id){
 	    $this->authorize("create", \App\Models\Beneficiario::class);
 		$beneficiario = new Beneficiario();
@@ -22,10 +22,10 @@ class BeneficiarioController extends Controller
 		$user->tipo_usuario = 2;
 		$user->save();
 		return redirect("/beneficiarios/");
-		
-    
+
+
     }
-    
+
     public function listar(){
         $this->authorize("view", \App\Models\Beneficiario::class);
         $beneficiarios = DB::select("SELECT * FROM beneficiarios WHERE deleted_at IS NULL");
@@ -36,7 +36,7 @@ class BeneficiarioController extends Controller
         }
         return view('listabeneficiario',['datas' => $datas]);
     }
-    
+
     public function remover($id){
         $this->authorize("delete", \App\Models\Beneficiario::class);
     	$beneficiario = Beneficiario::where('user_id', '=', $id)->first();

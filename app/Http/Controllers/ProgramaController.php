@@ -24,6 +24,10 @@ class ProgramaController extends Controller
 
     }
 
+    public function updateView(){
+
+    }
+
     public function update(){
 
     }

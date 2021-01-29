@@ -47,6 +47,7 @@
                     <td> <a href="{{route('listAnexos', ['id' => $p->id])}}">Anexos</a></td>
                     <td><a>Atualizar</a></td>
                     <td><a href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
+                    <td><a href="{{route('listBolsaPrograma', ['idPrograma' =>$p->id])}}">Bolsas</a></td>
                 </tr>
             @endforeach
 
