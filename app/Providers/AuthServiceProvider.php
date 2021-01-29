@@ -2,12 +2,24 @@
 
 namespace App\Providers;
 
+use App\Models\Anexo;
+use App\Models\Edital;
+use App\Models\Programa;
+use App\Models\Beneficiario;
+use  App\Models\Bolsa;
+use App\Models\Conta;
+
+use App\Policies\AnexoPolicy;
+use App\Policies\BolsaPolicy;
+use App\Policies\EditalPolicy;
+use App\Policies\ProgramaPolicy;
+use App\Policies\ContaPolicy;
+use App\Policies\BeneficiarioPolicy;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Models\Conta;
-use App\Policies\ContaPolicy;
-use App\Models\Beneficiario;
-use App\Policies\BeneficiarioPolicy;
+
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +30,10 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Conta::class => ContaPolicy::class,
         Beneficiario::class => BeneficiarioPolicy::class,
+        Bolsa::class => BolsaPolicy::class,
+        Programa::class => ProgramaPolicy::class,
+        Anexo::class => AnexoPolicy::class,
+        Edital::class => EditalPolicy::class,
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

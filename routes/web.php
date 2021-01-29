@@ -5,6 +5,8 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AnexoController;
 use \App\Http\Controllers\BeneficiarioController;
 use \App\Http\Controllers\ContaController;
+use \App\Http\Controllers\HomeController;
+use \App\Http\Controllers\BolsaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,28 +22,58 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/programa/new', [ProgramaController::class, 'create'])->name('createPrograma');
-Route::get('/programa/update/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
-Route::post('/programa/update/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
-Route::get('/programa/delete/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
+
+/*
+ * -------------------------------ROTAS PROGRAMA-------------------------------------
+ * */
+
+Route::post('/programa/adicionar', [ProgramaController::class, 'create'])->name('createPrograma');
+Route::get('/programa/atualizar/{id?}', [ProgramaController::class, 'updateView'])->name('updatePrograma');
+Route::post('/programa/atualizar/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
+Route::get('/programa/remover/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
 Route::get('/programa', [ProgramaController::class, 'list'])->name('listPrograma');
 
+/*
+ * -------------------------------ROTAS PROGRAMA - ANEXO -------------------------------------
+ * */
 Route::get('/programa/{id?}/anexos', [AnexoController::class, 'listAnexos'])->name('listAnexos');
-Route::post('/programa/{id?}/anexos/new', [AnexoController::class, 'createAnexo'])->name('createAnexo');
-Route::get('/programa/{id?}/anexos/delete/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
+Route::post('/programa/{id?}/anexos/adicionar', [AnexoController::class, 'createAnexo'])->name('createAnexo');
+Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
 
-
+/*
+ * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------
+ * */
 Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar']);
 Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio']);
 Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar']);
 Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover']);
+
+/*
+ * -------------------------------ROTAS CONTA -------------------------------------
+ * */
 
 Route::get('/contas/adicionar', [ContaController::class, 'inicio']);
 Route::post('/contas/adicionar', [ContaController::class, 'adicionar']);
 Route::get('/contas/', [ContaController::class, 'listar']);
 Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
 
+/*
+ * -------------------------------ROTAS BOLSA -------------------------------------
+ * */
+
+Route::get('/contas/{idConta}/bolsas/', [BolsaController::class, 'listBolsaBeneficiario'])->name('listBolsaBeneficiario');
+Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listarBolsasPrograma'])->name('listBolsaPrograma');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
+Route::get('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
+Route::post('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
+Route::post('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
+Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
+Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
+
+
+

@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiario;
+use App\Models\Edital;
 use Illuminate\Http\Request;
 
 class EditalController extends Controller
 {
-    public function cadastrarEdital(){
+    public function create(){
+        $this->authorize('create', Edital::class);
+    }
+
+    public function update(){
+        $this->authorize('create', Edital::class);
 
     }
 
-    public function editarEdital(){
+    public function updateView(){
+        $this->authorize('create', Edital::class);
 
     }
 
-    public function listarEdital(){
+    public function list(){
 
     }
 
-    public function deletarEdital(){
+    public function view(){
 
+    }
+
+    public function delete(){
+        $this->authorize('create', Edital::class);
     }
 }
