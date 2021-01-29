@@ -15,11 +15,16 @@ use App\Policies\EditalPolicy;
 use App\Policies\ProgramaPolicy;
 use App\Policies\ContaPolicy;
 use App\Policies\BeneficiarioPolicy;
+<<<<<<< HEAD
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
 
+=======
+use App\Models\Servidor;
+use App\Policies\ServidorPolicy;
+>>>>>>> upstream/master
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -30,10 +35,14 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Conta::class => ContaPolicy::class,
         Beneficiario::class => BeneficiarioPolicy::class,
+<<<<<<< HEAD
         Bolsa::class => BolsaPolicy::class,
         Programa::class => ProgramaPolicy::class,
         Anexo::class => AnexoPolicy::class,
         Edital::class => EditalPolicy::class,
+=======
+        Servidor::class => ServidorPolicy::class,
+>>>>>>> upstream/master
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

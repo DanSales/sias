@@ -5,8 +5,12 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AnexoController;
 use \App\Http\Controllers\BeneficiarioController;
 use \App\Http\Controllers\ContaController;
+<<<<<<< HEAD
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\BolsaController;
+=======
+use \App\Http\Controllers\ServidorController;
+>>>>>>> upstream/master
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +70,7 @@ Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasP
 
 Auth::routes();
 
+<<<<<<< HEAD
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
@@ -77,3 +82,30 @@ Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
 
 
 
+=======
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/servidors/', [ServidorController::class, 'listar']);
+Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
+Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
+
+
+>>>>>>> upstream/master

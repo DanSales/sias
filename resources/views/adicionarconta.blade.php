@@ -58,22 +58,6 @@
         		<strong>{{$message}}</strong><br>
         	</span>
         	@enderror
-			<label for="beneficiario_id">Beneficiario</label>
-		    <select name="beneficiario_id" id="beneficiario_id" class="form-control @error('beneficiario_id') is-invalid @enderror">
-		    	<option value="">Escolha um Beneficiario</option>
-				@foreach($beneficiarios as $beneficiario)
-					@if(old('beneficiario_id') == $beneficiario->id)
-						<option value="{{$beneficiario->id}}" selected='selected'>{{$beneficiario->id}}</option>
-					@else
-						<option value="{{$beneficiario->id}}">{{$beneficiario->id}}</option>
-					@endif
-				@endforeach
-			</select><br>
-			@error('beneficiario_id')
-        	<span class="invalid-feedback" role="alert">
-        		<strong>{{$message}}</strong><br>
-        	</span>
-        	@enderror
         	<input type="submit" value="cadastrar"/>
         </form>
     </body>
