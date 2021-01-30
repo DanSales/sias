@@ -42,7 +42,7 @@ class ContaPolicy
      * @return mixed
      */
     public function viewBolsaBeneficiario(User  $user, Conta $conta){
-        return \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
+        return \Auth::user()->tipo_usuario == 2 && \Auth::user()->beneficiarios->id == $conta->beneficiario_id;
     }
 
     /**

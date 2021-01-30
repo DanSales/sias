@@ -29,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
+
     protected $policies = [
         Conta::class => ContaPolicy::class,
         Beneficiario::class => BeneficiarioPolicy::class,
