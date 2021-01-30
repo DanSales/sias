@@ -16,8 +16,8 @@ class CreateCandidatosTable extends Migration
         Schema::create('candidatos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("relato_familiar");
-            $table->string("declaracao_rendimento");
+            $table->string("relato_familiar")->nullable(true);
+            $table->string("declaracao_rendimento")->nullable(true);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
