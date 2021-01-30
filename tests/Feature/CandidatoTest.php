@@ -13,10 +13,16 @@ class CandidatoTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    public function testCandidatoLogadoViewBolsa(){
+
+    }
+
+    public function testCandidatoRegister(){
+
+    }
+
+    public function testCandidadoViewPrograma(){
+
     }
 }
