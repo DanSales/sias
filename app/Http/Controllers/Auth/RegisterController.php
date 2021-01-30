@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Validator\UserValidator;
+use App\Models\Candidato;
 class RegisterController extends Controller
 {
     /*
@@ -68,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => "User",
             'nome_completo' => $data['nome_completo'],
             'cpf' => $data['cpf'],
@@ -78,5 +79,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'tipo_usuario' => 1,
         ]);
+        $candidato = new Candidato();
+        $candidato->user_id = $user->id;
+        $candidato->save();
+        return $user;
     }
 }
