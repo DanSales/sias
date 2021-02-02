@@ -78,24 +78,6 @@ Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/servidors/', [ServidorController::class, 'listar']);
 Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
 Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
