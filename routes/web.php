@@ -29,6 +29,7 @@ Route::get('/', function () {
  * */
 
 Route::post('/programa/adicionar', [ProgramaController::class, 'create'])->name('createPrograma');
+Route::get('/programa/adicionar', [ProgramaController::class, 'createView'])->name('createPrograma');
 Route::get('/programa/atualizar/{id?}', [ProgramaController::class, 'updateView'])->name('updatePrograma');
 Route::post('/programa/atualizar/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
 Route::get('/programa/remover/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
@@ -40,6 +41,18 @@ Route::get('/programa', [ProgramaController::class, 'list'])->name('listPrograma
 Route::get('/programa/{id?}/anexos', [AnexoController::class, 'listAnexos'])->name('listAnexos');
 Route::post('/programa/{id?}/anexos/adicionar', [AnexoController::class, 'createAnexo'])->name('createAnexo');
 Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
+
+/*
+ * -------------------------------ROTAS PROGRAMA - EDITAL -------------------------------------
+ * */
+Route::post('/programa/{idPrograma?}/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
+Route::get('/programa/{idPrograma?}/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
+Route::post('/programa/{idPrograma?}/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
+Route::post('/programa/{idPrograma?}/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
+Route::get('/programa/{idPrograma?}/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
+Route::get('/programa/{idPrograma?}/edital', [EditalController::class, 'list'])->name('listEdital');
+
+
 
 /*
  * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------
@@ -68,13 +81,6 @@ Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasP
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
-Route::get('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
-Route::post('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
-Route::post('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
-Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
-Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

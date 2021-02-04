@@ -34,7 +34,7 @@ class BolsaController extends Controller
         where u.id = ?
             AND c.id = ?',$arraySelect);
 
-        return view('bolsa', ['bolsas' => $bolsasBeneficiario]);
+        return view('bolsa.bolsa', ['bolsas' => $bolsasBeneficiario]);
     }
 
     public function listBolsasPrograma(Request $request){
@@ -55,7 +55,7 @@ class BolsaController extends Controller
             join users u on u.id = ben.user_id
         where p.id = :programaId', ['programaId' => $programa->id]);
 
-        return view('bolsaPrograma', ['bolsas' => $bolsasPrograma]);
+        return view('bolsa.bolsaPrograma', ['bolsas' => $bolsasPrograma]);
     }
 
     public function gerarBolsas(){

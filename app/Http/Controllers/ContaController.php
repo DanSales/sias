@@ -12,12 +12,12 @@ class ContaController extends Controller
         $this->authorize("view", \App\Models\Conta::class);
         $id = \Auth::user()->beneficiarios->id;
     	$contas = DB::select("select * from contas where deleted_at IS NULL and beneficiario_id = '$id'");
-    	return view('listaconta', ['contas' => $contas]);
+    	return view('conta.listaconta', ['contas' => $contas]);
     }
 
     public function inicio(){
         $this->authorize("create", \App\Models\Conta::class);
-    	return view('adicionarconta');
+    	return view('conta.adicionarconta');
     }
 
     public function adicionar(Request $request){

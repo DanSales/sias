@@ -16,14 +16,14 @@ class ServidorController extends Controller
         	$user = User::where('id', '=', $servidor->user_id)->first();
         	array_push($datas, $user);
         }
-        return view('listaservidor',['datas' => $datas]);
+        return view('servidor.listaservidor',['datas' => $datas]);
     }
-    
+
     public function inicio(){
         $this->authorize("create", \App\Models\Servidor::class);
-		return view("adicionarservidor");
+		return view("servidor.adicionarservidor");
 	}
-	
+
 	public function adicionar(Request $request){
 	    $this->authorize("create", \App\Models\Servidor::class);
 	    try{
@@ -42,7 +42,7 @@ class ServidorController extends Controller
     		$servidor->user_id = $user->id;
     		$servidor->save();
     		return redirect("/servidors/");
-    	
+
     	} catch(\App\Validator\ValidationException $exception){
     		return redirect("/servidors/adicionar/")
     			->withErrors($exception->getValidator())

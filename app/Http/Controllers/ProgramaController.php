@@ -9,14 +9,18 @@ use App\Validator\ProgramaValidator;
 
 class ProgramaController extends Controller
 {
+    public function createView(Request $request){
+        return view('programa.createPrograma');
+    }
+
     public function create(Request $request){
         try {
             ProgramaValidator::validate($request->all());
             Programa::create($request->all());
-            return redirect('/programa');
+            return redirect('/programa/');
         } catch (ValidationException $ve){
             $programas = Programa::all();
-            return redirect('/programa')
+            return redirect('/programa/adicionar')
                 ->with(['programas' => $programas])
                 ->withErrors($ve->getValidator())
                 ->withInput();
@@ -40,6 +44,6 @@ class ProgramaController extends Controller
 
     public function list(){
         $list = Programa::all();
-        return view('programa',['programas' => $list]);
+        return view('programa.programa',['programas' => $list]);
     }
 }

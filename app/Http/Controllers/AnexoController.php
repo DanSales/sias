@@ -63,7 +63,7 @@ class AnexoController extends Controller
     public function listAnexos($id){
         $anexos = Anexo::where('programa_id', '=',$id)->get();
         $programa = Programa::find($id);
-        return view('anexos', ['anexos' => $anexos, 'programa' => $programa]);
+        return view('anexo.anexos', ['anexos' => $anexos, 'programa' => $programa]);
     }
 
     public function deleteAnexo(Request $request){

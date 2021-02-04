@@ -10,7 +10,7 @@ class  BeneficiarioController extends Controller
     public function inicio(){
         $this->authorize("create", \App\Models\Beneficiario::class);
 		$datas = DB::select("SELECT * FROM users WHERE tipo_usuario = '1'");
-		return view("adicionarbeneficiario", ['datas' => $datas]);
+		return view("beneficiario.adicionarbeneficiario", ['datas' => $datas]);
 	}
 
 	public function adicionar($id){
@@ -34,7 +34,7 @@ class  BeneficiarioController extends Controller
         	$user = User::where('id', '=', $beneficiario->user_id)->first();
         	array_push($datas, $user);
         }
-        return view('listabeneficiario',['datas' => $datas]);
+        return view('beneficiario.listabeneficiario',['datas' => $datas]);
     }
 
     public function remover($id){
