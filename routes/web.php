@@ -23,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /*
  * -------------------------------ROTAS PROGRAMA-------------------------------------
  * */
@@ -52,24 +51,22 @@ Route::post('/programa/{idPrograma?}/edital/remover/{idEdital?}', [EditalControl
 Route::get('/programa/{idPrograma?}/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
 Route::get('/programa/{idPrograma?}/edital', [EditalController::class, 'list'])->name('listEdital');
 
-
-
 /*
  * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------
  * */
-Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar']);
-Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio']);
-Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar']);
-Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover']);
+Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar'])->name('listaBeneficiariosView');
+Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio'])->name('adicionarBeneficiarioView');
+Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar'])->name('adicionarBeneficiario');
+Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover'])->name('removerBeneficiario');;
 
 /*
  * -------------------------------ROTAS CONTA -------------------------------------
  * */
 
-Route::get('/contas/adicionar', [ContaController::class, 'inicio']);
-Route::post('/contas/adicionar', [ContaController::class, 'adicionar']);
-Route::get('/contas/', [ContaController::class, 'listar']);
-Route::get('/contas/remover/{id}', [ContaController::class, 'remover']);
+Route::get('/contas/adicionar', [ContaController::class, 'inicio'])->name('adicionarContaView');
+Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])->name('adicionarConta');
+Route::get('/contas/', [ContaController::class, 'listar'])->name('listaContas');
+Route::get('/contas/remover/{id}', [ContaController::class, 'remover'])->name('removerConta');
 
 /*
  * -------------------------------ROTAS BOLSA -------------------------------------

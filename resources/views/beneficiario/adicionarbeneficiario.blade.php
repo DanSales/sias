@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.base')
 
-        <title>Laravel</title>
-    </head>
-    <body>
-    	<h1>Alterar Candidatos para Beneficiarios</h1>
-        <ul>
-        	@foreach($datas as $data)
-        		<li>{{$data->nome_completo}}<a href="/beneficiarios/adicionar/{{$data->id}}">Tornar Beneficiario</a></li>
-        	@endforeach
-        </ul>
-    </body>
-</html>
+@section('Title', "Adicionar Beneficiário")
+
+@section('main')
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Nome Candidato</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="lista_estado_casos">
+                    @foreach($datas as $data)
+                        <tr>
+                            <td class="text-center">{{$data->nome_completo}}</td>
+                            <td class="text-center"><a class="btn btn-primary" href="{{route('adicionarBeneficiario', ['id' => $data->id])}}">Tornar Beneficiario</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection

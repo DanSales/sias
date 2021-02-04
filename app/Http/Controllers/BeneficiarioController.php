@@ -13,10 +13,10 @@ class  BeneficiarioController extends Controller
 		return view("beneficiario.adicionarbeneficiario", ['datas' => $datas]);
 	}
 
-	public function adicionar($id){
+	public function adicionar(Request $request){
 	    $this->authorize("create", \App\Models\Beneficiario::class);
 		$beneficiario = new Beneficiario();
-		$beneficiario->user_id = $id;
+		$beneficiario->user_id = $request->id;
 		$beneficiario->save();
 		$user = User::where('id', '=', $beneficiario->user_id)->first();
 		$user->tipo_usuario = 2;
