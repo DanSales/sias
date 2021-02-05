@@ -52,31 +52,7 @@ class ProgramaPolicy
      */
     public function create(User $user)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programa  $programa
-     * @return mixed
-     */
-    public function update(User $user, Programa $programa)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Programa  $programa
-     * @return mixed
-     */
-    public function delete(User $user, Programa $programa)
-    {
-        //
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**

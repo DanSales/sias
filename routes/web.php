@@ -66,7 +66,7 @@ Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remov
 Route::get('/contas/adicionar', [ContaController::class, 'inicio'])->name('adicionarContaView');
 Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])->name('adicionarConta');
 Route::get('/contas/', [ContaController::class, 'listar'])->name('listaContas');
-Route::get('/contas/remover/{id}', [ContaController::class, 'remover'])->name('removerConta');
+Route::get('/contas/remover/{id?}', [ContaController::class, 'remover'])->name('removerConta');
 
 /*
  * -------------------------------ROTAS BOLSA -------------------------------------

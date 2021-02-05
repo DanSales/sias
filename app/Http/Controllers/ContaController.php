@@ -35,8 +35,8 @@ class ContaController extends Controller
     	}
     }
 
-    public function remover($id){
-        $conta = Conta::find($id);
+    public function remover(Request $request){
+        $conta = Conta::find($request->id);
         $this->authorize("delete", [$conta], \App\Models\Conta::class);
     	$conta->delete();
     	return redirect("/contas/");

@@ -5,7 +5,9 @@
     @section('main')
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a class="float-right btn btn-primary" href="{{route('createPrograma')}}">Novo Programa</a>
+                @can('create', App\Models\Programa::class)
+                    <a class="float-right btn btn-primary" href="{{route('createPrograma')}}">Novo Programa</a>
+                @endcan
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -14,11 +16,16 @@
                         <tr class="text-center">
                             <th>Descrição</th>
                             <th>Valor do Benefício</th>
+                            @can('viewBolsasProjeto')
+                            <th></th>
+                            @endcan
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            @can('create', App\Models\Programa::class)
+                                <th></th>
+                                <th></th>
+                            @endcan
+
                         </thead>
                         <tbody id="lista_estado_casos">
                         @foreach($programas as $p)
@@ -26,10 +33,14 @@
                                 <td >{{$p->descricao}}</td>
                                 <td>{{$p->valor_beneficio}}</td>
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listAnexos', ['id' => $p->id])}}">Anexos</a></td>
+                                @can('viewBolsasProjeto')
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listBolsaPrograma', ['idPrograma' =>$p->id])}}">Bolsas</a></td>
+                                @endcan
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listEdital', ['idPrograma' =>$p->id])}}">Editais</a></td>
-                                <td class="text-center"><a class="btn btn-warning">Atualizar</a></td>
-                                <td class="text-center"><a class="btn btn-danger" href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
+                                @can('create', App\Models\Programa::class)
+                                    <td class="text-center"><a class="btn btn-warning">Atualizar</a></td>
+                                    <td class="text-center"><a class="btn btn-danger" href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
+                                @endcan
                             </tr>
                         @endforeach
 

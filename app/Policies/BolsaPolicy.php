@@ -22,7 +22,17 @@ class BolsaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+
+    }
+    /**
+     * Determine whether the user can view any models.
+     *
+     * @param  \App\Models\User  $user
+     * @return mixed
+     */
+    public function viewBolsasProjeto(User $user)
+    {
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
@@ -33,7 +43,7 @@ class BolsaPolicy
      */
     public function create(User $user)
     {
-
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
@@ -45,7 +55,7 @@ class BolsaPolicy
      */
     public function update(User $user, Bolsa $bolsa)
     {
-        //
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
@@ -57,7 +67,7 @@ class BolsaPolicy
      */
     public function delete(User $user, Bolsa $bolsa)
     {
-        //
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
