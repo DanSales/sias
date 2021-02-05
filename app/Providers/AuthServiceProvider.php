@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Anexo;
+use App\Models\Candidato;
 use App\Models\Edital;
 use App\Models\Programa;
 use App\Models\Beneficiario;
@@ -11,6 +12,7 @@ use App\Models\Conta;
 
 use App\Policies\AnexoPolicy;
 use App\Policies\BolsaPolicy;
+use App\Policies\CandidatoPolicy;
 use App\Policies\EditalPolicy;
 use App\Policies\ProgramaPolicy;
 use App\Policies\ContaPolicy;
@@ -38,6 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         Anexo::class => AnexoPolicy::class,
         Edital::class => EditalPolicy::class,
         Servidor::class => ServidorPolicy::class,
+        Candidato::class => CandidatoPolicy::class
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

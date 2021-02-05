@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Anexo;
+use App\Models\Candidato;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class AnexoPolicy
+class CandidatoPolicy
 {
     use HandlesAuthorization;
 
@@ -26,12 +26,12 @@ class AnexoPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Anexo  $anexo
+     * @param  \App\Models\Candidato  $candidato
      * @return mixed
      */
-    public function view(User $user, Anexo $anexo)
+    public function view(User $user)
     {
-        //
+        return \Auth::user()->tipo_usuario == 2 || \Auth::user()->tipo_usuario == 1;
     }
 
     /**
@@ -42,17 +42,17 @@ class AnexoPolicy
      */
     public function create(User $user)
     {
-        return \Auth::user()->tipo_usuario == 3;
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Anexo  $anexo
+     * @param  \App\Models\Candidato  $candidato
      * @return mixed
      */
-    public function update(User $user, Anexo $anexo)
+    public function update(User $user, Candidato $candidato)
     {
         //
     }
@@ -61,10 +61,10 @@ class AnexoPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Anexo  $anexo
+     * @param  \App\Models\Candidato  $candidato
      * @return mixed
      */
-    public function delete(User $user, Anexo $anexo)
+    public function delete(User $user, Candidato $candidato)
     {
         //
     }
@@ -73,10 +73,10 @@ class AnexoPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Anexo  $anexo
+     * @param  \App\Models\Candidato  $candidato
      * @return mixed
      */
-    public function restore(User $user, Anexo $anexo)
+    public function restore(User $user, Candidato $candidato)
     {
         //
     }
@@ -85,10 +85,10 @@ class AnexoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Anexo  $anexo
+     * @param  \App\Models\Candidato  $candidato
      * @return mixed
      */
-    public function forceDelete(User $user, Anexo $anexo)
+    public function forceDelete(User $user, Candidato $candidato)
     {
         //
     }

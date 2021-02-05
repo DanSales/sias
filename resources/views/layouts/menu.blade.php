@@ -19,8 +19,16 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    @can('view', \App\Models\Candidato::class)
+
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Inscrições</span></a>
+    </li>
+
+    @endcan
+
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
@@ -29,16 +37,15 @@
             <span>Programas</span></a>
     </li>
 
-    <hr class="sidebar-divider">
-
+    @can('view', \App\Models\Conta::class)
     <li class="nav-item">
-        <a class="nav-link" href="{{route('listPrograma')}}">
+        <a class="nav-link" href="{{route('listaContas')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Conta</span></a>
+            <span>Contas</span></a>
     </li>
+    @endcan
 
-    <hr class="sidebar-divider">
-
+    @can('create', \App\Models\Beneficiario::class)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -52,9 +59,7 @@
             </div>
         </div>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    @endcan
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
