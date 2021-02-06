@@ -8,6 +8,7 @@ use \App\Http\Controllers\ContaController;
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\BolsaController;
 use \App\Http\Controllers\ServidorController;
+use \App\Http\Controllers\FamiliaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,4 +86,19 @@ Route::get('/servidors/', [ServidorController::class, 'listar']);
 Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
 Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
 
+
+
+
+
+
+
+
+
+
+/*
+ * -------------------------------ROTAS FAMILIA -------------------------------------
+ * */
+Route::get('/familias/adicionar', [FamiliaController::class, 'inicio'])->name('adicionarFamiliaView');
+Route::post('/familias/adicionar', [FamiliaController::class, 'adicionar'])->name('adicionarFamilia');
+Route::get('/familias/', [FamiliaController::class, 'listar'])->name('listaFamilias');
 

@@ -9,6 +9,7 @@ use App\Models\Programa;
 use App\Models\Beneficiario;
 use  App\Models\Bolsa;
 use App\Models\Conta;
+use App\Models\Familia;
 
 use App\Policies\AnexoPolicy;
 use App\Policies\BolsaPolicy;
@@ -17,6 +18,7 @@ use App\Policies\EditalPolicy;
 use App\Policies\ProgramaPolicy;
 use App\Policies\ContaPolicy;
 use App\Policies\BeneficiarioPolicy;
+use App\Policies\FamiliaPolicy;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -40,7 +42,8 @@ class AuthServiceProvider extends ServiceProvider
         Anexo::class => AnexoPolicy::class,
         Edital::class => EditalPolicy::class,
         Servidor::class => ServidorPolicy::class,
-        Candidato::class => CandidatoPolicy::class
+        Candidato::class => CandidatoPolicy::class,
+        Familia::class => FamiliaPolicy::class
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

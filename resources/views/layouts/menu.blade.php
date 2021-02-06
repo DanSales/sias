@@ -44,6 +44,14 @@
             <span>Contas</span></a>
     </li>
     @endcan
+    
+    @can('view', \App\Models\Familia::class)
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('listaFamilias')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Familias</span></a>
+    </li>
+    @endcan
 
     @can('create', \App\Models\Beneficiario::class)
     <li class="nav-item">
