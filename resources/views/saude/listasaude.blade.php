@@ -1,12 +1,14 @@
 @extends('layouts.base')
 
-@section('Title', "Familias")
+@section('Title', "Saude")
 
 @section('main')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             @can('create', App\Models\Familia::class)
-                <a class="float-right btn btn-primary" href="{{route('adicionarFamiliaView')}}">Nova Familia</a>
+                @if (count($saudes) == 0) 
+                    <a class="float-right btn btn-primary" href="{{route('adicionarSaudesView',['id' => $id])}}">Adicionar Informacoes de Saude</a>
+                @endif
             @endcan
         </div>
         <div class="card-body">
@@ -20,10 +22,10 @@
 
                     </thead>
                     <tbody id="lista_estado_casos">
-                        @foreach($familias as $familia)
+                        @foreach($saudes as $saude)
                             <tr>
-                                <td>{{$familia->data_nascimento}}</td>
-                                <td class="text-center"><a class="btn btn-primary" href="{{route('listaSaudes', ['id'=>$familia->id])}}">Informacoes Saude</a></td>
+                                <td>Informacao Saude</td>
+                                <td class="text-center"><a class="btn btn-primary" >Atualizar Informacoes</a></td>
                             </tr>
                         @endforeach
                     </tbody>

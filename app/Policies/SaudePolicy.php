@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Familia;
+use App\Models\Saude;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FamiliaPolicy
+class SaudePolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class FamiliaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
+     * @param  \App\Models\Saude  $saude
      * @return mixed
      */
-    public function view(User $user)
+    public function view(User $user, Saude $saude)
     {
-        return \Auth::user()->tipo_usuario == 2 || \Auth::user()->tipo_usuario == 1;
+        //
     }
 
     /**
@@ -41,63 +41,53 @@ class FamiliaPolicy
      */
     public function create(User $user)
     {
-        return \Auth::user()->tipo_usuario == 2 || \Auth::user()->tipo_usuario == 1;
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
+     * @param  \App\Models\Saude  $saude
      * @return mixed
      */
-    public function update(User $user, Familia $familia)
+    public function update(User $user, Saude $saude)
     {
-        return \Auth::user()->id == $familia->user_id;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
+     * @param  \App\Models\Saude  $saude
      * @return mixed
      */
-    public function delete(User $user, Familia $familia)
+    public function delete(User $user, Saude $saude)
     {
-        return \Auth::user()->id == $familia->user_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
+     * @param  \App\Models\Saude  $saude
      * @return mixed
      */
-    public function restore(User $user, Familia $familia)
+    public function restore(User $user, Saude $saude)
     {
         //
     }
-    
-    /**
-     * Determine whether the user can create saude
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
-     * @return mixed
-     */
-    public function viewSaudeFamilia(User $user, Familia $familia){
-        return (\Auth::user()->id == $familia->user_id) && ($familia->saudes == null);
-    }
+
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Familia  $familia
+     * @param  \App\Models\Saude  $saude
      * @return mixed
      */
-    public function forceDelete(User $user, Familia $familia)
+    public function forceDelete(User $user, Saude $saude)
     {
         //
     }
