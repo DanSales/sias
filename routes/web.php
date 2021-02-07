@@ -8,6 +8,8 @@ use \App\Http\Controllers\ContaController;
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\BolsaController;
 use \App\Http\Controllers\ServidorController;
+use \App\Http\Controllers\FamiliaController;
+use \App\Http\Controllers\SaudeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,3 +88,23 @@ Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
 Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
 
 
+
+
+
+
+
+
+
+
+/*
+ * -------------------------------ROTAS FAMILIA -------------------------------------
+ * */
+Route::get('/familias/adicionar', [FamiliaController::class, 'inicio'])->name('adicionarFamiliaView');
+Route::post('/familias/adicionar', [FamiliaController::class, 'adicionar'])->name('adicionarFamilia');
+Route::get('/familias/', [FamiliaController::class, 'listar'])->name('listaFamilias');
+/*
+*---------------------------------ROTAS FAMILIA - SAUDE -----------------------------
+* */
+Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
+Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');
+Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])->name('adicionarSaudes');
