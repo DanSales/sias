@@ -1,56 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Cadastrar Programa</h1>
-<form method="post" action="{{route('createPrograma')}}">
-    @csrf
+@extends('layouts.base')
 
-    Descrição: <input type="text" name="descricao" @error('descricao') is-invalid @enderror" value ="{{ old('descricao')}}" required autofocus><br>
-    @error('descricao')
-    <span class="invalid-feedback" role="alert">
-        		<strong>{{$message}}</strong><br>
-        	</span>
-    @enderror
+@section("Title", 'Editais')
 
-    Valor do Benefício: <input type="text" name="valor_beneficio" @error('valor_beneficio') is-invalid @enderror" value ="{{ old('valor_beneficio')}}" required autofocus><br>
-    @error('valor_beneficio')
-    <span class="invalid-feedback" role="alert">
-        		<strong>{{$message}}</strong><br>
-        	</span>
-    @enderror
-    <input type="submit" value="Cadastrar">
-</form>
+@section('main')
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            @can('create', App\Models\Edital::class)
+                <a class="float-right btn btn-primary" href="{{route('createPrograma')}}">Novo Programa</a>
+            @endcan
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Data</th>
+                        <th>Número</th>
+                        <th>Arquivo</th>
+                        <th>Programa</th>
+                        <th></th>
+                        <th></th>
+                    @endcan
+                    </thead>
+                    <tbody id="lista_estado_casos">
+                    @foreach($editais as $e)
+                        <tr>
+                            <td>$e->data_edital</td>
+                            <td>$e->numero_edital</td>
+                            <td>$e->arquivo_edital</td>
+                            <td>$e->programa->descricao</td>
+                            <td><a class="btn btn-warning" href="{{route('updateEditalView', ['idEdital' => $e->id])}}">Atualizar</a></td>
+                            <td><a class="btn btn-danger" href="{{route('deleteEdital', ['idEdital' => $e->id])}}">Deletar</a></td>
+                        </tr>
+                    @endforeach
 
-<h1>Lista Programas</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Descrição</th>
-        <th>Valor do Benefício</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($programas as $p)
-        <tr >
-            <td>{{$p->descricao}}</td>
-            <td>{{$p->valor_beneficio}}</td>
-            <td> <a href="{{route('listAnexos', ['id' => $p->id])}}">Anexos</a></td>
-            <td><a>Atualizar</a></td>
-            <td><a href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
-        </tr>
-    @endforeach
-
-    </tbody>
-</table>
-</body>
-</html>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection

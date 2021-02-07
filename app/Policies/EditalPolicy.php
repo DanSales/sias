@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Edital;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class EditalPolicy
 {
@@ -41,7 +42,7 @@ class EditalPolicy
      */
     public function create(User $user)
     {
-        //
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**

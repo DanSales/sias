@@ -44,12 +44,12 @@ Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class,
 /*
  * -------------------------------ROTAS PROGRAMA - EDITAL -------------------------------------
  * */
-Route::post('/programa/{idPrograma?}/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
-Route::get('/programa/{idPrograma?}/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
-Route::post('/programa/{idPrograma?}/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
-Route::post('/programa/{idPrograma?}/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
-Route::get('/programa/{idPrograma?}/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
-Route::get('/programa/{idPrograma?}/edital', [EditalController::class, 'list'])->name('listEdital');
+Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
+Route::get('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
+Route::post('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
+Route::post('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
+Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
+Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
 
 /*
  * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------

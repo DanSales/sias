@@ -23,7 +23,8 @@ class EditalController extends Controller
     }
 
     public function list(){
-
+        $editais = Edital::all();
+        return view('edital.edital', ['editais' => $editais ]);
     }
 
     public function view(){
