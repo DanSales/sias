@@ -37,6 +37,14 @@
             <span>Programas</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('listEdital')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Editais</span></a>
+    </li>
+
+
+
     @can('view', \App\Models\Conta::class)
     <li class="nav-item">
         <a class="nav-link" href="{{route('listaContas')}}">
@@ -44,7 +52,7 @@
             <span>Contas</span></a>
     </li>
     @endcan
-    
+
     @can('view', \App\Models\Familia::class)
     <li class="nav-item">
         <a class="nav-link" href="{{route('listaFamilias')}}">

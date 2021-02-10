@@ -6,7 +6,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             @can('create', App\Models\Edital::class)
-                <a class="float-right btn btn-primary" href="{{route('createPrograma')}}">Novo Programa</a>
+                <a class="float-right btn btn-primary" href="{{route('createEdital')}}">Novo Edital</a>
             @endcan
         </div>
         <div class="card-body">
@@ -18,19 +18,22 @@
                         <th>Número</th>
                         <th>Arquivo</th>
                         <th>Programa</th>
+                        @can('create', App\Models\Edital::class)
                         <th></th>
                         <th></th>
-                    @endcan
+                        @endcan
                     </thead>
                     <tbody id="lista_estado_casos">
                     @foreach($editais as $e)
                         <tr>
-                            <td>$e->data_edital</td>
-                            <td>$e->numero_edital</td>
-                            <td>$e->arquivo_edital</td>
-                            <td>$e->programa->descricao</td>
+                            <td>{{$e->data_edital}}</td>
+                            <td>{{$e->numero_edital}}</td>
+                            <td>{{$e->arquivo_edital}}</td>
+                            <td>{{$e->programa->descricao}}</td>
+                            @can('create', App\Models\Edital::class)
                             <td><a class="btn btn-warning" href="{{route('updateEditalView', ['idEdital' => $e->id])}}">Atualizar</a></td>
                             <td><a class="btn btn-danger" href="{{route('deleteEdital', ['idEdital' => $e->id])}}">Deletar</a></td>
+                            @endcan
                         </tr>
                     @endforeach
 

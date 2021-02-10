@@ -3,7 +3,6 @@
 
 namespace App\Validator;
 
-
 use App\Models\Edital;
 
 class EditalValidator

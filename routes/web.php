@@ -10,6 +10,8 @@ use \App\Http\Controllers\BolsaController;
 use \App\Http\Controllers\ServidorController;
 use \App\Http\Controllers\FamiliaController;
 use \App\Http\Controllers\SaudeController;
+use \App\Http\Controllers\EditalController;
+use \App\Http\Controllers\WelcomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +23,7 @@ use \App\Http\Controllers\SaudeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'inicio'])->name("homePage");
 
 /*
  * -------------------------------ROTAS PROGRAMA-------------------------------------
@@ -46,10 +46,11 @@ Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class,
 /*
  * -------------------------------ROTAS PROGRAMA - EDITAL -------------------------------------
  * */
+Route::get('/edital/adicionar', [EditalController::class, 'createView'])->name('createEdital');
 Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
 Route::get('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
 Route::post('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
-Route::post('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
+Route::get('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
 Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
 Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
 

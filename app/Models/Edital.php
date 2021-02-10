@@ -21,13 +21,15 @@ class Edital extends Model
         'programa_id.*' => 'O id do programa é obrigatório'
     ];
 
+    protected $fillable = ['data_edital', 'numero_edital', 'programa_id', 'arquivo_edital'];
+
     public function users()
     {
         return $this->belongsToMany('App\Models\User');
     }
 
     public function programa(){
-        return $this->hasOne('App\Models\Programa');
+        return $this->belongsTo('App\Models\Programa');
     }
 
 }

@@ -20,7 +20,6 @@
                             <th></th>
                             @endcan
                             <th></th>
-                            <th></th>
                             @can('create', App\Models\Programa::class)
                                 <th></th>
                                 <th></th>
@@ -36,7 +35,6 @@
                                 @can('viewBolsasProjeto')
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listBolsaPrograma', ['idPrograma' =>$p->id])}}">Bolsas</a></td>
                                 @endcan
-                                <td class="text-center"><a class="btn btn-primary" href="{{route('listEdital', ['idPrograma' =>$p->id])}}">Editais</a></td>
                                 @can('create', App\Models\Programa::class)
                                     <td class="text-center"><a class="btn btn-warning">Atualizar</a></td>
                                     <td class="text-center"><a class="btn btn-danger" href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>

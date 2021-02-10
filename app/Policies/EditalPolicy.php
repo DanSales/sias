@@ -66,7 +66,7 @@ class EditalPolicy
      */
     public function delete(User $user, Edital $edital)
     {
-        //
+        return \Auth::user()->tipo_usuario == 3;
     }
 
     /**
