@@ -6,7 +6,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             @can('create', App\Models\Familia::class)
-                <a class="float-right btn btn-primary" href="{{route('adicionarFamiliaView')}}">Nova Familia</a>
+                <a class="float-right btn btn-primary" href="{{route('adicionarFamiliaView', ['idEdital' => $idEdital])}}">Nova Familia</a>
             @endcan
         </div>
         <div class="card-body">

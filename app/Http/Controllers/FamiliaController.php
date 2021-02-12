@@ -7,11 +7,15 @@ use App\Models\Familia;
 use Illuminate\Support\Facades\Storage;
 class FamiliaController extends Controller
 {
-    public function listar(){
+    public function listar($idEdital){
         $this->authorize("view", \App\Models\Familia::class);
         $id = \Auth::user()->id;
     	$familias = DB::select("select * from familias where user_id = '$id'");
-    	return view('familia.listafamilia', ['familias' => $familias]);
+    	return view('familia.listafamilia',
+            [
+                'familias' => $familias,
+                'idEdital' => $idEdital
+            ]);
     }
 
     public function inicio(){

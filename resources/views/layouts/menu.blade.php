@@ -22,9 +22,10 @@
     @can('view', \App\Models\Candidato::class)
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('selecionarProgramaInscricao')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Inscrições</span></a>
+            <span>Inscrições</span>
+        </a>
     </li>
 
     @endcan
@@ -53,13 +54,6 @@
     </li>
     @endcan
 
-    @can('view', \App\Models\Familia::class)
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('listaFamilias')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Familias</span></a>
-    </li>
-    @endcan
 
     @can('create', \App\Models\Beneficiario::class)
     <li class="nav-item">
