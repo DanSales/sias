@@ -4,7 +4,7 @@
 @section('main')
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form method="post" action="{{route('createPrograma')}}">
+            <form method="post" action="{{route('createPrograma')}}" >
                 @csrf
                 <div class="row">
                     <div class="col-12 col-md-6">

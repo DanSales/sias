@@ -13,7 +13,7 @@ class FamiliaController extends Controller
     	$familias = DB::select("select * from familias where user_id = '$id'");
     	return view('familia.listafamilia', ['familias' => $familias]);
     }
-    
+
     public function inicio(){
         $this->authorize("create", \App\Models\Familia::class);
     	return view('familia.adicionarfamilia');
@@ -32,12 +32,13 @@ class FamiliaController extends Controller
     		    $familia->escolaridade = $request->input("escolaridade");
     		    $familia->renda_mensal = $request->input("renda_mensal");
     		    $familia->profissao = $request->input("profissao");
+
     		    if($request->hasFile('declaracao_autonomo') && $request->file('declaracao_autonomo')->isValid()){
     		        $nome_arquivo = $request
                     ->file('declaracao_autonomo')
                     ->getClientOriginalName();
                     $nome_final = $id.'-'.$nome_arquivo;
-                    
+
                     $upload = $request
                     ->file('declaracao_autonomo')
                     ->storeAs('familias/'.$id,$nome_final,'public');
@@ -54,7 +55,7 @@ class FamiliaController extends Controller
                     ->file('declaracao_agricultor')
                     ->getClientOriginalName();
                     $nome_final = $id.'-'.$nome_arquivo;
-                    
+
                     $upload = $request
                     ->file('declaracao_agricultor')
                     ->storeAs('familias/'.$id,$nome_final,'public');

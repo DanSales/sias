@@ -56,14 +56,14 @@ class ProgramaTest extends TestCase
 
         $this->call('POST', '/login', $credentials);
 
-        $conta = [
+        $programa = [
             '_token' => csrf_token(),
             'valor_beneficio' => '200',
-            'descricao' => $faker->lastName(),
+            'descricao' => $faker->lastName().$faker->lastName().$faker->lastName().$faker->lastName()
         ];
 
         $this->actingAs($user)
-            ->post('/programa/adicionar',$conta)
+            ->post('/programa/adicionar',$programa)
             ->assertLocation('/programa');
     }
 
