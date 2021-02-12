@@ -22,7 +22,7 @@ class ContaFactory extends Factory
     public function definition()
     {
         return [
-            'agencia' => $this->faker->numberBetween(1),
+            'agencia' => $this->faker->numberBetween(100),
             'banco' => $this->faker->unique(true)->company(),
             'codigo_banco' => $this->faker->numberBetween(1,1000),
             'tipo_conta' =>$this->faker->numberBetween(1,2),

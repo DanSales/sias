@@ -2,6 +2,10 @@
 
 namespace Tests\Unit;
 
+use App\Models\Conta;
+use App\Validator\ContaValidator;
+use App\Validator\ValidationException;
+use http\Exception\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
