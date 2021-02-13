@@ -9,12 +9,16 @@ class OutrasInfo extends Model
 {
     use HasFactory;
 
-    public static $rules = ['atividade' => 'required|min:10|max:100',
+    protected $fillable = ['atividade', 'renda', 'familia_id'];
+
+    public static $rules = [
+        'atividade' => 'required|min:10|max:100',
         'renda' => 'required|numeric',
         'familia_id' => 'required'
 
     ];
-    public static $messages = ['atividade' => 'A atividade é obrigatória e deve ter entre 10 e 100 caracteres',
+    public static $messages = [
+        'atividade' => 'A atividade é obrigatória e deve ter entre 10 e 100 caracteres',
         'renda.*' => 'A renda é obrigatória e deve ser numérica',
         'familia_id.*' => 'O id da familia é obrigatório'
     ];

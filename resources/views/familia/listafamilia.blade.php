@@ -26,6 +26,7 @@
                                 <td>{{$familia->data_nascimento}}</td>
                                 <td class="text-center"><a class="btn btn-warning">Mais informações</a></td>
                                 <td class="text-center"><a class="btn btn-danger">Deletar</a></td>
+                                <td class="text-center" ><a class="btn btn-primary" href="{{route('adicionarOutrasInfoView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Adicionar Outras Informações </a></td>
                             </tr>
                         @endforeach
                     </tbody>
