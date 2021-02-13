@@ -7,20 +7,26 @@ use App\Models\Familia;
 use Illuminate\Support\Facades\Storage;
 class FamiliaController extends Controller
 {
-    public function listar(){
+    public function listar($idEdital){
         $this->authorize("view", \App\Models\Familia::class);
         $id = \Auth::user()->id;
     	$familias = DB::select("select * from familias where user_id = '$id'");
-    	return view('familia.listafamilia', ['familias' => $familias]);
+    	return view('familia.listafamilia',
+            [
+                'familias' => $familias,
+                'idEdital' => $idEdital
+            ]);
     }
 
-    public function inicio(){
+    public function inicio(Request $request){
         $this->authorize("create", \App\Models\Familia::class);
-    	return view('familia.adicionarfamilia');
+    	return view('familia.adicionarfamilia', ['idEdital' => $request->idEdital]);
     }
 
     public function adicionar(Request $request){
         $this->authorize("create", \App\Models\Familia::class);
+        $idEdital = $request->idEdital;
+        $request->request->remove('idEdital');
         try{
     	    $id = \Auth::user()->id;
     		\App\Validator\FamiliaValidator::validate($request->all() + ["user_id" => $id]);
@@ -44,7 +50,7 @@ class FamiliaController extends Controller
                     ->storeAs('familias/'.$id,$nome_final,'public');
                     if (!$upload){
 
-                        return redirect("/familias/adicionar/")
+                        return redirect("inscricao/".$idEdital."/familias/adicionar/")
                                     ->withErrors(['declaracao_autonomo' => 'Falha ao realizar upload'])
                                     ->withInput();
                     }
@@ -61,21 +67,21 @@ class FamiliaController extends Controller
                     ->storeAs('familias/'.$id,$nome_final,'public');
                     if (!$upload){
 
-                        return redirect("/familias/adicionar/")
+                        return redirect("inscricao/".$idEdital."/familias/adicionar/")
                                     ->withErrors(['declaracao_agricultor' => 'Falha ao realizar upload'])
                                     ->withInput();
                     }
                     $familia->declaracao_agricultor = $upload;
     		    }
     		    $familia->save();
-    		    return redirect("/familias/");
+    		    return redirect("inscricao/".$$idEdital."/familias/");
     		}
     		else{
     		    Familia::create($request->all() + ["user_id" => $id]);
-    		    return redirect("/familias/");
+    		    return redirect("inscricao/".$idEdital."/familias/");
     		}
     	} catch(\App\Validator\ValidationException $exception){
-    		return redirect("/familias/adicionar/")
+    		return redirect("inscricao/".$idEdital."/familias/adicionar/")
     			->withErrors($exception->getValidator())
     			->withInput();
     	}

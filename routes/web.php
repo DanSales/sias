@@ -12,6 +12,7 @@ use \App\Http\Controllers\FamiliaController;
 use \App\Http\Controllers\SaudeController;
 use \App\Http\Controllers\EditalController;
 use \App\Http\Controllers\WelcomeController;
+use \App\Http\Controllers\InscricaoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,23 +90,26 @@ Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
 Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
 
 
-
-
-
-
-
-
-
-
 /*
- * -------------------------------ROTAS FAMILIA -------------------------------------
+ * ----------------------------------------ROTAS INSCRICAO------------------------------------------------
  * */
-Route::get('/familias/adicionar', [FamiliaController::class, 'inicio'])->name('adicionarFamiliaView');
-Route::post('/familias/adicionar', [FamiliaController::class, 'adicionar'])->name('adicionarFamilia');
-Route::get('/familias/', [FamiliaController::class, 'listar'])->name('listaFamilias');
-/*
-*---------------------------------ROTAS FAMILIA - SAUDE -----------------------------
-* */
+
+Route::get('/inscricao/programa' ,[InscricaoController::class, 'inscricaoSelectProgramaView'])
+    ->name('selecionarProgramaInscricao');
+
+Route::get('/inscricao/{idPrograma}/edital',[InscricaoController::class, 'inscricaoSelectEditalView'])
+    ->name('selecionarEditalInscricao');
+
+Route::get('/inscricao/{idEdital}/familias/', [FamiliaController::class, 'listar'])
+    ->name('listaFamilias');
+
+Route::get('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'inicio'])
+    ->name('adicionarFamiliaView');
+
+Route::post('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'adicionar'])
+    ->name('adicionarFamilia');
+
+
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
 Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');
 Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])->name('adicionarSaudes');

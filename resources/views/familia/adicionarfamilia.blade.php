@@ -8,6 +8,16 @@
             <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+                    <input type="hidden" id="idEdital" name="idEdital" value="{{$idEdital}}">
+                    <div class="col-12 col-md-4">
+                        <label>Nome: </label>
+                        <input  id = "nome" type="text"class="form-control @error('nome') is-invalid @enderror" name="nome" value ="{{ old('nome')}}" required autofocus/> <br>
+                        @error('nome')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{$message}}</strong><br>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="col-12 col-md-4">
                         <label>CPF: </label>
                         <input id = "cpf" type="text"class="form-control @error('cpf') is-invalid @enderror" name="cpf" value ="{{ old('cpf')}}"/> <br>
@@ -21,7 +31,7 @@
 
                     <div class="col-12 col-md-4">
                         <label>Data de Nascimento:</label>
-                        <input id="data_nascimento" type="text" class="form-control @error('data_nascimento') is-invalid @enderror" name="data_nascimento" value ="{{ old('data_nascimento')}}" required autofocus/> <br>
+                        <input id="data_nascimento" type="date" class="form-control @error('data_nascimento') is-invalid @enderror" name="data_nascimento" value ="{{ old('data_nascimento')}}" required autofocus/> <br>
                         @error('data_nascimento')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{$message}}</strong><br>
@@ -29,8 +39,6 @@
                         @enderror
 
                     </div>
-
-
                     <div class="col-12 col-md-4">
                         <label>Escolaridade:</label>
                         <input id="escolaridade" type="text" class="form-control @error('escolaridade') is-invalid @enderror" name="escolaridade" value ="{{ old('escolaridade')}}" required autofocus/> <br>
