@@ -13,6 +13,7 @@ use \App\Http\Controllers\SaudeController;
 use \App\Http\Controllers\EditalController;
 use \App\Http\Controllers\WelcomeController;
 use \App\Http\Controllers\InscricaoController;
+use \App\Http\Controllers\OutrasInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,6 +109,12 @@ Route::get('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class
 
 Route::post('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'adicionar'])
     ->name('adicionarFamilia');
+
+Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionarView'])
+    ->name('adicionarOutrasInfoView');
+
+Route::post('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionar'])
+    ->name('adicionaradicionarOutrasInfo');
 
 
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
