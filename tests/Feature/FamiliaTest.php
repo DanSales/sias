@@ -18,7 +18,7 @@ class FamiliaTest extends TestCase
      * A basic feature test example.
      *
      * @return void
-     */
+
     public function testCandidatoCreateFamiliar(){
         $faker = Faker\Factory::create();
         $candidato = Candidato::factory()->create();
@@ -51,5 +51,5 @@ class FamiliaTest extends TestCase
         $this->actingAs($user)
             ->post('/familias/adicionar',$familiar)
             ->assertLocation('/familias');
-    }
+    }*/
 }

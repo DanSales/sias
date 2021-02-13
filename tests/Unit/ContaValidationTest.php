@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Models\Conta;
 use App\Validator\ContaValidator;
 use App\Validator\ValidationException;
+use phpDocumentor\Reflection\Types\This;
 use Tests\TestCase;
 
 class ContaValidationTest extends TestCase
@@ -31,4 +32,25 @@ class ContaValidationTest extends TestCase
         $dados = $conta->toArray();
         ContaValidator::validate($dados);
     }
+
+    public function testCreateContaSemBanco(){
+        $this->expectException(ValidationException::class);
+        $conta = Conta::factory()->make(['banco' => '']);
+        $dados = $conta->toArray();
+        ContaValidator::validate($dados);
+    }
+    public function testCreateContaSemDados(){
+        $this->expectException(ValidationException::class);
+        $dados = [];
+        ContaValidator::validate($dados);
+    }
+
+    public function testCreateConta(){
+        $conta = Conta::factory()->make();
+        $dados = $conta->toArray();
+        ContaValidator::validate($dados);
+        Conta::create($dados);
+        $this->assertTrue(true);
+    }
+
 }
