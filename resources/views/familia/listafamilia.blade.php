@@ -14,16 +14,18 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>Descrição</th>
+                        <th>Nome</th>
+                        <th>Data Nascimento</th>
                         <th></th>
                         <th></th>
-
                     </thead>
                     <tbody id="lista_estado_casos">
                         @foreach($familias as $familia)
                             <tr>
+                                <td>{{$familia->nome}}</td>
                                 <td>{{$familia->data_nascimento}}</td>
-                                <td class="text-center"><a class="btn btn-primary" href="{{route('listaSaudes', ['id'=>$familia->id])}}">Informacoes Saude</a></td>
+                                <td class="text-center"><a class="btn btn-warning">Mais informações</a></td>
+                                <td class="text-center"><a class="btn btn-danger">Deletar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

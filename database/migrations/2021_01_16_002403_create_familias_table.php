@@ -16,6 +16,7 @@ class CreateFamiliasTable extends Migration
         Schema::create('familias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome')->nullable(false);
             $table->string("cpf")->nullable(true);
             $table->date("data_nascimento")->nullable(false);
             $table->string("declaracao_autonomo")->nullable(true);

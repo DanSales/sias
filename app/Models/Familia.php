@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Familia extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
-    public static $rules = ['cpf' => 'nullable|digits:11|numeric',
+    public static $rules = [
+        'nome' => 'required|string',
+        'cpf' => 'nullable|digits:11|numeric',
         'data_nascimento' => 'required|string',
         'declaracao_autonomo' => 'nullable|file',
         'declaracao_agricultor' => 'nullable|file',

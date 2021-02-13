@@ -22,6 +22,7 @@ class FamiliaFactory extends Factory
     public function definition()
     {
         return [
+            'nome' => $this->faker->name(),
             'cpf' => $this->faker->numberBetween(11,11),
             'data_nascimento' => $this->faker->date(),
             'declaracao_autonomo' => $this->faker->file('/tmp','/tmp/seeders',true),
