@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Familia;
+use App\Models\Saude;
 use Illuminate\Support\Facades\Storage;
 class FamiliaController extends Controller
 {
@@ -29,10 +30,11 @@ class FamiliaController extends Controller
         $request->request->remove('idEdital');
         try{
     	    $id = \Auth::user()->id;
-    		\App\Validator\FamiliaValidator::validate($request->all() + ["user_id" => $id]);
+    		\App\Validator\FamiliaValidator::validate($request->except('despesa_mensal','valor_plano','flag_doenca','flag_plano','flag_dificuldade','flag_deficiencia') + ["user_id" => $id]);
     		if(($request->hasFile("declaracao_autonomo") && $request->file('declaracao_autonomo')->isValid()) || ($request->hasFile("declaracao_agricultor") && $request->file('declaracao_agricultor')->isValid())){
     		    $familia = new Familia();
     		    $familia->user_id = $id;
+    		    $familia->nome = $request->input("nome");
     		    $familia->cpf = $request->input("cpf");
     		    $familia->data_nascimento = $request->input("data_nascimento");
     		    $familia->escolaridade = $request->input("escolaridade");
@@ -73,17 +75,43 @@ class FamiliaController extends Controller
                     }
                     $familia->declaracao_agricultor = $upload;
     		    }
-    		    $familia->save();
-    		    return redirect("inscricao/".$$idEdital."/familias/");
+    		    //return redirect("inscricao/".$idEdital."/familias/");
     		}
     		else{
-    		    Familia::create($request->all() + ["user_id" => $id]);
-    		    return redirect("inscricao/".$idEdital."/familias/");
+    		    $familia = new Familia();
+    		    $familia->user_id = $id;
+    		    $familia->nome = $request->input("nome");
+    		    $familia->cpf = $request->input("cpf");
+    		    $familia->data_nascimento = $request->input("data_nascimento");
+    		    $familia->escolaridade = $request->input("escolaridade");
+    		    $familia->renda_mensal = $request->input("renda_mensal");
+    		    $familia->profissao = $request->input("profissao");
+    		    //return redirect("inscricao/".$idEdital."/familias/");
     		}
     	} catch(\App\Validator\ValidationException $exception){
     		return redirect("inscricao/".$idEdital."/familias/adicionar/")
     			->withErrors($exception->getValidator())
     			->withInput();
     	}
+    	try{
+    	    \App\Validator\SaudeValidator::validate($request->except('nome','cpf','data_nascimento','escolaridade','renda_mensal','profissao','declaracao_autonomo','declaracao_agricultor')+["familia_id" => 1]);
+    	    
+    	    $saude = new Saude();
+    	    $saude->despesa_mensal = $request->input("despesa_mensal");
+    	    $saude->valor_plano = $request->input("valor_plano");
+    	    $saude->flag_doenca = $request->input("flag_doenca");
+    	    $saude->flag_plano = $request->input("flag_plano");
+    	    $saude->flag_dificuldade = $request->input("flag_dificuldade");
+    	    $saude->flag_deficiencia = $request->input("flag_deficiencia");
+    	    $familia->save();
+    	    $saude->familia_id = $familia->id;
+    	    $saude->save();
+    	    return redirect("inscricao/".$idEdital."/familias/");
+    	} catch(\App\Validator\ValidationException $exception){
+    	    return redirect("inscricao/".$idEdital."/familias/adicionar/")
+    			->withErrors($exception->getValidator())
+    			->withInput();
+    	}
+    	
     }
 }
