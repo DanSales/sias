@@ -40,6 +40,20 @@ class CandidatoPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
+
+
+    public function inscricao(User $user){
+        return ((\Auth::user()->tipo_usuario == 1) || (\Auth::user()->tipo_usuario == 2));
+    }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @param  \App\Models\User  $user
+     * @return mixed
+     */
+
+
     public function create(User $user)
     {
         //
