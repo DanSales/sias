@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Edital extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     public static $rules = ['data_edital' => 'required|date',
         'numero_edital' => 'required|numeric',
         'arquivo_edital' => 'required|file',

@@ -11,7 +11,7 @@ class FamiliaController extends Controller
     public function listar($idEdital){
         $this->authorize("view", \App\Models\Familia::class);
         $id = \Auth::user()->id;
-    	$familias = DB::select("select * from familias where user_id = '$id'");
+    	$familias = DB::select("select * from familias where deleted_at IS NULL and user_id = '$id'");
     	return view('familia.listafamilia',
             [
                 'familias' => $familias,

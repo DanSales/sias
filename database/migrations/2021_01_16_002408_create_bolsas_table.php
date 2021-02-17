@@ -21,6 +21,7 @@ class CreateBolsasTable extends Migration
             $table->foreign('conta_id')->references('id')->on('contas');
             $table->unsignedInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
 
         });
     }
@@ -33,5 +34,6 @@ class CreateBolsasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('bolsas');
+        Schema::dropSoftDeletes('bolsas');
     }
 }
