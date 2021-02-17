@@ -26,6 +26,7 @@ class CreateFamiliasTable extends Migration
             $table->string("profissao")->nullable(false);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -37,5 +38,6 @@ class CreateFamiliasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('familias');
+        Schema::dropSoftDeletes('familias');
     }
 }

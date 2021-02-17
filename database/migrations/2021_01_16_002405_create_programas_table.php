@@ -18,6 +18,7 @@ class CreateProgramasTable extends Migration
             $table->timestamps();
             $table->decimal("valor_beneficio")->nullable(false);
             $table->string("descricao")->nullable(false);
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -29,5 +30,6 @@ class CreateProgramasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('programas');
+        Schema::dropSoftDeletes('programas');
     }
 }

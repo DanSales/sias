@@ -21,6 +21,7 @@ class CreateEditalsTable extends Migration
             $table->string("arquivo_edital")->nullable(false);
             $table->unsignedInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -32,5 +33,6 @@ class CreateEditalsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('editals');
+        Schema::dropSoftDeletes('editals');
     }
 }

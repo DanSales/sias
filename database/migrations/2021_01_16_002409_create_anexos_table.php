@@ -19,6 +19,7 @@ class CreateAnexosTable extends Migration
             $table->string("caminho_arquivo")->nullable(false);
             $table->unsignedInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas');
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -30,5 +31,6 @@ class CreateAnexosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('anexos');
+        Schema::dropSoftDeletes('anexos');
     }
 }
