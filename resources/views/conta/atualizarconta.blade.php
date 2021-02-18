@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('Title', 'Adicionar Conta')
+@section('Title', 'Atualizar Conta')
 
 @section('main')
     <div class="card shadow mb-4">
@@ -79,7 +79,7 @@
                         @enderror
                     </div>
                 </div>
-                <input class="btn btn-primary float-right" type="submit" value="Cadastrar"/>
+                <input class="btn btn-primary float-right" type="submit" value="Atualizar"/>
             </form>
         </div>
     </div>

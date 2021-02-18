@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('Title', 'Adicionar Familia')
+@section('Title', 'Atualizar Familia')
 
 @section('main')
     <div class="card shadow mb-4">

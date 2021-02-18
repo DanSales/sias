@@ -14,6 +14,7 @@ use \App\Http\Controllers\EditalController;
 use \App\Http\Controllers\WelcomeController;
 use \App\Http\Controllers\InscricaoController;
 use \App\Http\Controllers\OutrasInfoController;
+use \App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,3 +127,9 @@ Route::post('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [Outr
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
 Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');
 Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])->name('adicionarSaudes');
+
+/*
+ * -------------------------------Atualizar User -------------------------------------
+ * */
+Route::get('/atualizar/', [UserController::class, 'initatualizar'])->name('atualizarUserView');
+Route::post('/atualizar/', [UserController::class, 'atualizar'])->name('atualizarUser');
