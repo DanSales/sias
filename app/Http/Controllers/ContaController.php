@@ -41,4 +41,22 @@ class ContaController extends Controller
     	$conta->delete();
     	return redirect("/contas/");
     }
+    public function initatualizar($id){
+        $conta = Conta::find($id);
+        $this->authorize("update", [$conta], \App\Models\Conta::class);
+        return view('conta.atualizarconta', ['conta' => $conta]);
+    }
+    public function atualizar(Request $request, $id){
+        $conta = Conta::find($id);
+        $this->authorize("update", [$conta], \App\Models\Conta::class);
+        try{
+            $id = \Auth::user()->beneficiarios->id;
+    		\App\Validator\ContaValidator::validate($request->all() + ["beneficiario_id" => $id]);
+    		$conta->update($request->all());
+            return redirect("/contas/");
+        }catch(\App\Validator\ValidationException $exception){
+    		return redirect("/contas/atualizar/{$conta->id}")
+    			->withErrors($exception->getValidator());
+    	}
+    }
 }

@@ -24,6 +24,7 @@
                             <tr>
                                 <td>{{$conta->banco}}</td>
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listBolsaBeneficiario', ['idConta'=>$conta->id])}}"> Bolsas</a></td>
+                                <td class="text-center"><a class="btn btn-primary" href="{{route('atualizarContaView', ['id' => $conta->id])}}">Atualizar Conta</a></td>
                                 <td class="text-center"><a class="btn btn-danger" href="{{route('removerConta', ['id' => $conta->id])}}">Remover Conta</a></td>
                             </tr>
                         @endforeach

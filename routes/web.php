@@ -14,6 +14,7 @@ use \App\Http\Controllers\EditalController;
 use \App\Http\Controllers\WelcomeController;
 use \App\Http\Controllers\InscricaoController;
 use \App\Http\Controllers\OutrasInfoController;
+use \App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,7 +73,8 @@ Route::get('/contas/adicionar', [ContaController::class, 'inicio'])->name('adici
 Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])->name('adicionarConta');
 Route::get('/contas/', [ContaController::class, 'listar'])->name('listaContas');
 Route::get('/contas/remover/{id?}', [ContaController::class, 'remover'])->name('removerConta');
-
+Route::get('/contas/atualizar/{id?}', [ContaController::class, 'initatualizar'])->name('atualizarContaView');
+Route::post('/contas/atualizar/{id?}', [ContaController::class, 'atualizar'])->name('atualizarConta');
 /*
  * -------------------------------ROTAS BOLSA -------------------------------------
  * */
@@ -110,6 +112,11 @@ Route::get('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class
 Route::post('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'adicionar'])
     ->name('adicionarFamilia');
 
+Route::get('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'initatualizar'])
+    ->name('atualizarFamiliaView');
+Route::post('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'atualizar'])
+    ->name('atualizarFamilia');
+
 Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionarView'])
     ->name('adicionarOutrasInfoView');
 
@@ -132,3 +139,9 @@ Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/remover/{idOutraIn
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
 Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');
 Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])->name('adicionarSaudes');
+
+/*
+ * -------------------------------Atualizar User -------------------------------------
+ * */
+Route::get('/atualizar/', [UserController::class, 'initatualizar'])->name('atualizarUserView');
+Route::post('/atualizar/', [UserController::class, 'atualizar'])->name('atualizarUser');

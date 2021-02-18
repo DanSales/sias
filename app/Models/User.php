@@ -12,14 +12,12 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     public static $rules = ['email' => 'required|email|string',
-                            'password' => 'required|min:8|confirmed|string',
                             'nome_completo' => 'required|min:14|max:100',
                             'cpf' => 'required|digits:11|numeric',
                             'data_nascimento' => 'required|string',
                             'endereco' => 'required|min:15|max:100'
         ];
     public static $messages = ['email.*' => 'O campo email é obrigatório e deve ter formato de email',
-                                'password.*' => 'O campo senha é obrigatório, deve ter no mínimo 8 caracteres e deve ser igual a confirmação',
                                 'nome_completo.*' => 'O nome completo é obrigatório e deve ter entre 14 e 100 caracteres',
                                 'cpf.*' => 'O campo cpf é obrigatório, deve ter 11 caracteres e deve ser composto de números',
                                 'data_nascimento.*' => "O campo de data de nascimento é obrigatório e deve ter formato de data",
