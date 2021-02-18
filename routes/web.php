@@ -111,6 +111,11 @@ Route::get('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class
 Route::post('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'adicionar'])
     ->name('adicionarFamilia');
 
+Route::get('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'initatualizar'])
+    ->name('atualizarFamiliaView');
+Route::post('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'atualizar'])
+    ->name('atualizarFamilia');
+
 Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionarView'])
     ->name('adicionarOutrasInfoView');
 
