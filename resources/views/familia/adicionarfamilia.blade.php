@@ -85,6 +85,8 @@
         	            </span>
                         @enderror
                     </div>
+                </div>
+                <div class="row">
                      <div class="col-12 col-md-4">
                         <label>Despesa Mensal: </label>
                         <input id = "despesa_mensal" type="text"class="form-control @error('despesa_mensal') is-invalid @enderror" name="despesa_mensal" value ="{{ old('despesa_mensal')}}"/> <br>

@@ -15,7 +15,18 @@ class OutrasInfoController extends Controller
         return view('outrasInfo.adicionarOutrasInfo',
             [
                 'idEdital' => $request->idEdital,
-                'idFamilia' => $request->idFamilia
+                'idFamilia' => $request->idFamilia,
+            ]);
+    }
+
+    public function listOutrasInfo(Request $request){
+        $this->authorize('inscricao', Candidato::class);
+        $outrasInfoFamiliar = OutrasInfo::where('familia_id', '=', $request->idFamilia)->get();
+        return view('outrasInfo.listaOutrasInfo',
+            [
+                'outrasInfo' => $outrasInfoFamiliar,
+                'idEdital' => $request->idEdital,
+                'idFamilia' => $request->idFamilia,
             ]);
     }
 
@@ -27,11 +38,21 @@ class OutrasInfoController extends Controller
             OutrasInfoValidator::validate($request->all());
             OutrasInfo::create($request->all());
 
-            return redirect("inscricao/".$idEdital."/familias/");
+            return $this->listOutrasInfo($request);
         } catch (ValidationException $ve){
             return redirect("inscricao/".$idEdital."/familias/".$request->idFamilia."/outifo/adicionar/")
                 ->withErrors($ve->getValidator())
                 ->withInput();
         }
     }
+
+    public function delete(Request $request){
+        $this->authorize('inscricao', Candidato::class);
+        $outrasInfo = OutrasInfo::find($request->idOutraInfo);
+        $outrasInfo->delete();
+
+        return $this->listOutrasInfo($request);
+    }
+
+
 }

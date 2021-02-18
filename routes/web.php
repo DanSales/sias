@@ -116,6 +116,12 @@ Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [Outra
 Route::post('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionar'])
     ->name('adicionaradicionarOutrasInfo');
 
+Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/lista', [OutrasInfoController::class, 'listOutrasInfo'])
+    ->name('listaOutrasInfoFamiliar');
+
+Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/remover/{idOutraInfo}', [OutrasInfoController::class, 'delete'])
+    ->name('deleteOutrasInfo');
+
 
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
 Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');

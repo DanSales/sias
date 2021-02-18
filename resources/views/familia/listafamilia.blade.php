@@ -18,15 +18,18 @@
                         <th>Data Nascimento</th>
                         <th></th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </thead>
                     <tbody id="lista_estado_casos">
                         @foreach($familias as $familia)
                             <tr>
                                 <td>{{$familia->nome}}</td>
                                 <td>{{$familia->data_nascimento}}</td>
-                                <td class="text-center"><a class="btn btn-warning">Mais informações</a></td>
+                                <td class="text-center"><a class="btn btn-primary">Detalhes</a></td>
+                                <td class="text-center" ><a class="btn btn-primary" href="{{route('listaOutrasInfoFamiliar', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Outras Informações</a></td>
+                                <td class="text-center"><a class="btn btn-warning">Atualizar</a></td>
                                 <td class="text-center"><a class="btn btn-danger">Deletar</a></td>
-                                <td class="text-center" ><a class="btn btn-primary" href="{{route('adicionarOutrasInfoView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Adicionar Outras Informações </a></td>
                             </tr>
                         @endforeach
                     </tbody>
