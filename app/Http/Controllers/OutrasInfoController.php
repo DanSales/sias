@@ -54,5 +54,33 @@ class OutrasInfoController extends Controller
         return $this->listOutrasInfo($request);
     }
 
+    public function atualizarView(Request $request){
+        $this->authorize('inscricao', Candidato::class);
+        $outrasInfo = OutrasInfo::find($request->idOutraInfo);
+        return view('outrasInfo.atualizarOutrasInfo',
+            [
+                'idEdital' => $request->idEdital,
+                'idFamilia' => $request->idFamilia,
+                'outrasInfo' => $outrasInfo,
+            ]);
+    }
 
+    public function atualizar(Request $request){
+        $this->authorize('inscricao', Candidato::class);
+
+        $outrasInfo = OutrasInfo::find($request->id);
+        $outrasInfo->atividade = $request->atividade;
+        $outrasInfo->renda = $request->renda;
+
+        try {
+            OutrasInfoValidator::validate($outrasInfo->toArray());
+            $outrasInfo->update();
+            return $this->listOutrasInfo($request);
+        } catch (ValidationException $ve){
+            return redirect("inscricao/".$request->idEdital."/familias/".$request->idFamilia."/outifo/atualizar?idOutraInfo=".$request->id)
+                ->withErrors($ve->getValidator())
+                ->withInput();
+        }
+
+    }
 }

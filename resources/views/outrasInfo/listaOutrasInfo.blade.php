@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{$o->atividade}}</td>
                             <td>{{$o->renda}}</td>
-                            <td class="text-center"><a class="btn btn-warning">Atualizar</a></td>
+                            <td class="text-center"><a class="btn btn-warning" href="{{route('atualizarOutrasInfoView', ['idOutraInfo' =>$o->id, 'idFamilia' => $idFamilia, 'idEdital' => $idEdital])}}">Atualizar</a></td>
                             <td class="text-center"><a class="btn btn-danger" href="{{route('deleteOutrasInfo', ['idOutraInfo' =>$o->id, 'idFamilia' => $idFamilia, 'idEdital' => $idEdital])}}">Deletar</a></td>
                         </tr>
                     @endforeach

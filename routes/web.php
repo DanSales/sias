@@ -116,6 +116,12 @@ Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [Outra
 Route::post('/inscricao/{idEdital}/familias/{idFamilia}/outifo/adicionar', [OutrasInfoController::class, 'adicionar'])
     ->name('adicionaradicionarOutrasInfo');
 
+Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/atualizar/', [OutrasInfoController::class, 'atualizarView'])
+    ->name('atualizarOutrasInfoView');
+
+Route::post('/inscricao/{idEdital}/familias/{idFamilia}/outifo/atualizar/', [OutrasInfoController::class, 'atualizar'])
+    ->name('atualizarOutrasInfo');
+
 Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/lista', [OutrasInfoController::class, 'listOutrasInfo'])
     ->name('listaOutrasInfoFamiliar');
 
