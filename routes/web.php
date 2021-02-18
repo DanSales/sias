@@ -72,7 +72,8 @@ Route::get('/contas/adicionar', [ContaController::class, 'inicio'])->name('adici
 Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])->name('adicionarConta');
 Route::get('/contas/', [ContaController::class, 'listar'])->name('listaContas');
 Route::get('/contas/remover/{id?}', [ContaController::class, 'remover'])->name('removerConta');
-
+Route::get('/contas/atualizar/{id?}', [ContaController::class, 'initatualizar'])->name('atualizarContaView');
+Route::post('/contas/atualizar/{id?}', [ContaController::class, 'atualizar'])->name('atualizarConta');
 /*
  * -------------------------------ROTAS BOLSA -------------------------------------
  * */
