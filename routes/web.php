@@ -32,64 +32,120 @@ Route::get('/', [WelcomeController::class, 'inicio'])->name("homePage");
  * -------------------------------ROTAS PROGRAMA-------------------------------------
  * */
 
-Route::post('/programa/adicionar', [ProgramaController::class, 'create'])->name('createPrograma');
-Route::get('/programa/adicionar', [ProgramaController::class, 'createView'])->name('createPrograma');
-Route::get('/programa/atualizar/{id?}', [ProgramaController::class, 'updateView'])->name('updatePrograma');
-Route::post('/programa/atualizar/{id?}', [ProgramaController::class, 'update'])->name('updatePrograma');
-Route::get('/programa/remover/{id?}', [ProgramaController::class, 'delete'])->name('deletePrograma');
-Route::get('/programa', [ProgramaController::class, 'list'])->name('listPrograma');
+Route::post('/programa/adicionar', [ProgramaController::class, 'create'])
+    ->name('createPrograma');
+
+Route::get('/programa/adicionar', [ProgramaController::class, 'createView'])
+    ->name('createPrograma');
+
+Route::get('/programa/atualizar/{id?}', [ProgramaController::class, 'updateView'])
+    ->name('updatePrograma');
+
+Route::post('/programa/atualizar/{id?}', [ProgramaController::class, 'update'])
+    ->name('updatePrograma');
+
+Route::get('/programa/remover/{id?}', [ProgramaController::class, 'delete'])
+    ->name('deletePrograma');
+
+Route::get('/programa', [ProgramaController::class, 'list'])
+    ->name('listPrograma');
 
 /*
  * -------------------------------ROTAS PROGRAMA - ANEXO -------------------------------------
  * */
-Route::get('/programa/{id?}/anexos', [AnexoController::class, 'listAnexos'])->name('listAnexos');
-Route::post('/programa/{id?}/anexos/adicionar', [AnexoController::class, 'createAnexo'])->name('createAnexo');
-Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])->name('deleteAnexo');
+Route::get('/programa/{id?}/anexos', [AnexoController::class, 'listAnexos'])
+    ->name('listAnexos');
+
+Route::post('/programa/{id?}/anexos/adicionar', [AnexoController::class, 'createAnexo'])
+    ->name('createAnexo');
+
+Route::get('/programa/{id?}/anexos/remover/{idAnexo?}', [AnexoController::class, 'deleteAnexo'])
+    ->name('deleteAnexo');
 
 /*
  * -------------------------------ROTAS PROGRAMA - EDITAL -------------------------------------
  * */
-Route::get('/edital/adicionar', [EditalController::class, 'createView'])->name('createEdital');
-Route::post('/edital/adicionar', [EditalController::class, 'create'])->name('createEdital');
-Route::get('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEditalView');
-Route::post('/edital/atualizar/{idEdital?}', [EditalController::class, 'update'])->name('updateEdital');
-Route::get('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])->name('deleteEdital');
-Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])->name('viewEdital');
-Route::get('/edital', [EditalController::class, 'list'])->name('listEdital');
+Route::get('/edital/adicionar', [EditalController::class, 'createView'])
+    ->name('createEdital');
+
+Route::post('/edital/adicionar', [EditalController::class, 'create'])
+    ->name('createEdital');
+
+Route::get('/edital/atualizar/{idEdital}', [EditalController::class, 'updateView'])
+    ->name('updateEditalView');
+
+Route::post('/edital/atualizar/{idEdital}', [EditalController::class, 'update'])
+    ->name('updateEdital');
+
+Route::get('/edital/remover/{idEdital?}', [EditalController::class, 'delete'])
+    ->name('deleteEdital');
+
+Route::get('/edital/vizualizar/{idEdital?}', [EditalController::class, 'view'])
+    ->name('viewEdital');
+
+Route::get('/edital', [EditalController::class, 'list'])
+    ->name('listEdital');
 
 /*
  * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------
  * */
-Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar'])->name('listaBeneficiariosView');
-Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio'])->name('adicionarBeneficiarioView');
-Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar'])->name('adicionarBeneficiario');
-Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover'])->name('removerBeneficiario');;
+Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar'])
+    ->name('listaBeneficiariosView');
+
+Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio'])
+    ->name('adicionarBeneficiarioView');
+
+Route::get('/beneficiarios/adicionar/{id}', [BeneficiarioController::class, 'adicionar'])
+    ->name('adicionarBeneficiario');
+
+Route::get('/beneficiarios/remover/{id}', [BeneficiarioController::class, 'remover'])
+    ->name('removerBeneficiario');
+
 
 /*
  * -------------------------------ROTAS CONTA -------------------------------------
  * */
 
-Route::get('/contas/adicionar', [ContaController::class, 'inicio'])->name('adicionarContaView');
-Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])->name('adicionarConta');
-Route::get('/contas/', [ContaController::class, 'listar'])->name('listaContas');
-Route::get('/contas/remover/{id?}', [ContaController::class, 'remover'])->name('removerConta');
-Route::get('/contas/atualizar/{id?}', [ContaController::class, 'initatualizar'])->name('atualizarContaView');
-Route::post('/contas/atualizar/{id?}', [ContaController::class, 'atualizar'])->name('atualizarConta');
+Route::get('/contas/adicionar', [ContaController::class, 'inicio'])
+    ->name('adicionarContaView');
+
+Route::post('/contas/adicionar', [ContaController::class, 'adicionar'])
+    ->name('adicionarConta');
+
+Route::get('/contas/', [ContaController::class, 'listar'])
+    ->name('listaContas');
+
+Route::get('/contas/remover/{id?}', [ContaController::class, 'remover'])
+    ->name('removerConta');
+
+Route::get('/contas/atualizar/{id?}', [ContaController::class, 'initatualizar'])
+    ->name('atualizarContaView');
+
+Route::post('/contas/atualizar/{id?}', [ContaController::class, 'atualizar'])
+    ->name('atualizarConta');
+
 /*
  * -------------------------------ROTAS BOLSA -------------------------------------
  * */
 
-Route::get('/contas/{idConta}/bolsas/', [BolsaController::class, 'listBolsaBeneficiario'])->name('listBolsaBeneficiario');
-Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasPrograma'])->name('listBolsaPrograma');
+Route::get('/contas/{idConta}/bolsas/', [BolsaController::class, 'listBolsaBeneficiario'])
+    ->name('listBolsaBeneficiario');
+
+Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasPrograma'])
+    ->name('listBolsaPrograma');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
 
 Route::get('/servidors/', [ServidorController::class, 'listar']);
+
 Route::get('/servidors/adicionar', [ServidorController::class, 'inicio']);
+
 Route::post('/servidors/adicionar', [ServidorController::class, 'adicionar']);
 
 
@@ -114,6 +170,7 @@ Route::post('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::clas
 
 Route::get('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'initatualizar'])
     ->name('atualizarFamiliaView');
+
 Route::post('/inscricao/{idEdital}/familias/atualizar/{idFamilia}', [FamiliaController::class, 'atualizar'])
     ->name('atualizarFamilia');
 
@@ -136,12 +193,20 @@ Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/remover/{idOutraIn
     ->name('deleteOutrasInfo');
 
 
-Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])->name('listaSaudes');
-Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])->name('adicionarSaudesView');
-Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])->name('adicionarSaudes');
+Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])
+    ->name('listaSaudes');
+
+Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio'])
+    ->name('adicionarSaudesView');
+
+Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])
+    ->name('adicionarSaudes');
 
 /*
  * -------------------------------Atualizar User -------------------------------------
  * */
-Route::get('/atualizar/', [UserController::class, 'initatualizar'])->name('atualizarUserView');
-Route::post('/atualizar/', [UserController::class, 'atualizar'])->name('atualizarUser');
+Route::get('/atualizar/', [UserController::class, 'initatualizar'])
+    ->name('atualizarUserView');
+
+Route::post('/atualizar/', [UserController::class, 'atualizar'])
+    ->name('atualizarUser');

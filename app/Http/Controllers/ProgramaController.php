@@ -30,12 +30,32 @@ class ProgramaController extends Controller
 
     }
 
-    public function updateView(){
+    public function updateView(Request $request){
         $this->authorize('create', Programa::class);
+        $programa = Programa::find($request->id);
+        return view('programa.updatePrograma',
+            [
+                'programa'=> $programa,
+            ]
+        );
+
     }
 
-    public function update(){
+    public function update(Request $request){
         $this->authorize('create', Programa::class);
+        $programa = Programa::find($request->id);
+        $programa->descricao = $request->descricao;
+        $programa->valor_beneficio = $request-> valor_beneficio;
+        try {
+            ProgramaValidator::validate($programa->toArray());
+            $programa->update();
+            return redirect('/programa/');
+        } catch (ValidationException $ve){
+            return redirect('/programa/atualizar/'.$request->id)
+                ->withErrors($ve->getValidator())
+                ->withInput();
+        }
+
     }
 
     public function delete($id){

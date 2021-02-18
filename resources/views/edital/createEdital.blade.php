@@ -30,7 +30,7 @@
 
                     <div class="col-12 col-md-6">
                         <label>Arquivo: </label>
-                        <input class="form-control-file" type="file" name="arquivo_edital" id="arquivo" @error('arquivo_edital') is-invalid @enderror" value ="{{ old('arquivo_edital')}}" required autofocus>
+                        <input class="form-control-file" type="file" name="arquivo_edital" id="arquivo" @error('arquivo_edital') is-invalid @enderror" value ="{{ old('arquivo_edital')}}">
                         @error('arquivo_edital')
                         <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{$message}}</strong><br>
