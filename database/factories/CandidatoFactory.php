@@ -23,8 +23,8 @@ class CandidatoFactory extends Factory
     public function definition()
     {
         return [
-            'relato_familiar' => $this->faker->file('/tmp','/tmp/seeders',true),
-            'declaracao_rendimento' => $this->faker->file('/tmp','/tmp/seeders',true),
+            'relato_familiar' => $this->faker->file('/tmp',storage_path('app/public/inscricao/faker'),false),
+            'declaracao_rendimento' => $this->faker->file('/tmp',storage_path('app/public/inscricao/faker'),false),
             'user_id' => function(){
                 return self::factoryForModel('User')->create(['tipo_usuario' => 1])->id;
             }

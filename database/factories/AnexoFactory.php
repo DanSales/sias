@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Anexo;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class AnexoFactory extends Factory
 {
@@ -22,7 +23,7 @@ class AnexoFactory extends Factory
     public function definition()
     {
         return [
-            'caminho_arquivo' => $this->faker->file('/tmp','/tmp/seeders',true),
+            'caminho_arquivo' => $this->faker->file('/tmp',storage_path('app/public/anexos'),false),
             'programa_id' => $this->faker->numberBetween(1,15)
         ];
     }
