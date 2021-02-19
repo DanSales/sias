@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidato;
 use App\Models\Edital;
+use App\Models\EditalUser;
 use App\Models\Programa;
 use App\Validator\CandidatoValidator;
 use App\Validator\ValidationException;
@@ -90,7 +91,32 @@ class InscricaoController extends Controller
     }
 
     public function confirmacaoView(Request $request){
+        $this->authorize('inscricao', Candidato::class);
         $edital = Edital::find($request->idEdital);
         return view('inscricao.inscricaoConfirmacao', ['edital' =>$edital]);
+    }
+
+    public function finalizarInscricao(Request $request){
+        $this->authorize('inscricao', Candidato::class);
+        $inscricao = new EditalUser();
+        $inscricao->edital_id = $request->idEdital;
+        $inscricao->user_id = Auth::user()->id;
+
+        $familiares = \Auth::user()->familias;
+        $dadosCandidato = Candidato::where('user_id', '=', Auth::user()->id)->first();
+
+        $inscricao->relato_familiar = $dadosCandidato->relato_familiar;
+        $inscricao->declaracao_rendimento = $dadosCandidato->declaracao_rendimento;
+
+        $inscricao->save();
+
+        $idsFamiliares = [];
+        foreach ($familiares as $f){
+            $idsFamiliares[] = $f->id;
+        }
+        $inscricao->familias()->attach($idsFamiliares);
+
+        return redirect('/home');
+
     }
 }

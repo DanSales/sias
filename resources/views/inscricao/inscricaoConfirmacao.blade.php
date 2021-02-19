@@ -180,7 +180,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary float-right" href="{{route()}}">Inscrever-se</a>
+            <a class="btn btn-primary float-right" href="{{route('finalizarInscricao', ['idEdital' => $edital->id])}}">Inscrever-se</a>
             <button class="btn btn-primary">Voltar ao início</button>
 
         </div>

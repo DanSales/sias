@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFamiliaEditalUsersTable extends Migration
+class EditalUserFamilia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateFamiliaEditalUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('familia_edital_users', function (Blueprint $table) {
+        Schema::create('edital_user_familia', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedInteger('edital_users_id');
+            $table->unsignedInteger('edital_user_id');
             $table->unsignedInteger('familia_id');
-            $table->foreign('edital_users_id')->references('id')->on('edital_users');
+            $table->foreign('edital_user_id')->references('id')->on('edital_users');
             $table->foreign('familia_id')->references('id')->on('familias');
         });
+
     }
 
     /**
@@ -30,6 +31,6 @@ class CreateFamiliaEditalUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('familia_edital_users');
+        //
     }
 }

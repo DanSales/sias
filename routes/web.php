@@ -204,6 +204,9 @@ Route::post('/inscricao/{idEdital}/arquivos', [InscricaoController::class, 'arqu
 Route::get('/inscricao/{idEdital}/confirmacao', [InscricaoController::class, 'confirmacaoView'])
     ->name('confirmarInscricao');
 
+Route::get('/inscricao/{idEdital}/finalizacao', [InscricaoController::class, 'finalizarInscricao'])
+    ->name('finalizarInscricao');
+
 
 /*
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])
