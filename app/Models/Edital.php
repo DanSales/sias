@@ -34,4 +34,9 @@ class Edital extends Model
         return $this->belongsTo('App\Models\Programa')->withTrashed();
     }
 
+    public function edital_users()
+    {
+        return $this->belongsToMany('App\Models\EditalUser');
+    }
+
 }

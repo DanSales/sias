@@ -39,6 +39,12 @@ class Familia extends Model
     }
     public function outrasinfos()
     {
-        return $this->hasMany('App\Models\Outrasinfo');
+        return $this->hasMany('App\Models\OutrasInfo');
     }
+
+    public function edital_users(){
+        return $this->belongsToMany('App\Models\EditalUser');
+    }
+
+
 }
