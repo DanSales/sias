@@ -35,6 +35,7 @@
                     </tbody>
                 </table>
             </div>
+            <a type="button" href="{{route('enviarArquivosView', ['idEdital'=>$idEdital])}}" id="btnProximo" class="btn btn-primary float-right mt-3">Próximo</a>
         </div>
     </div>
 @endsection

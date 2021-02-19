@@ -192,7 +192,17 @@ Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/lista', [OutrasInf
 Route::get('/inscricao/{idEdital}/familias/{idFamilia}/outifo/remover/{idOutraInfo}', [OutrasInfoController::class, 'delete'])
     ->name('deleteOutrasInfo');
 
+Route::get('/inscricao/{idEdital}/arquivos', [InscricaoController::class, 'arquivosView'])
+    ->name('enviarArquivosView');
 
+Route::post('/inscricao/{idEdital}/arquivos', [InscricaoController::class, 'arquivos'])
+    ->name('enviarArquivos');
+
+Route::get('/inscricao/{idEdital}/confirmacao', [InscricaoController::class, 'confirmacaoView'])
+    ->name('confirmarInscricao');
+
+
+/*
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])
     ->name('listaSaudes');
 
@@ -201,6 +211,7 @@ Route::get('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'inicio']
 
 Route::post('/familias/{id?}/saudes/adicionar',[SaudeController::class, 'adicionar'])
     ->name('adicionarSaudes');
+*/
 
 /*
  * -------------------------------Atualizar User -------------------------------------
