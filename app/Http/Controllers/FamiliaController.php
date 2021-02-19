@@ -95,7 +95,7 @@ class FamiliaController extends Controller
     	}
     	try{
     	    \App\Validator\SaudeValidator::validate($request->except('nome','cpf','data_nascimento','escolaridade','renda_mensal','profissao','declaracao_autonomo','declaracao_agricultor')+["familia_id" => 1]);
-    	    
+
     	    $saude = new Saude();
     	    $saude->despesa_mensal = $request->input("despesa_mensal");
     	    $saude->valor_plano = $request->input("valor_plano");
@@ -199,5 +199,12 @@ class FamiliaController extends Controller
     	    return redirect("inscricao/".$idEdital."/familias/atualizar/{$familia->id}")
     			->withErrors($exception->getValidator());
     	}
+    }
+
+    public function remover(Request $request){
+        $famila = Familia::find($request->id);
+        $this->authorize("delete", [$famila], \App\Models\Familia::class);
+        $famila->delete();
+        return redirect("/inscricao/".$request->idEdital."/familias/");
     }
 }

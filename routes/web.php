@@ -162,6 +162,9 @@ Route::get('/inscricao/{idPrograma}/edital',[InscricaoController::class, 'inscri
 Route::get('/inscricao/{idEdital}/familias/', [FamiliaController::class, 'listar'])
     ->name('listaFamilias');
 
+Route::get('/inscricao/{idEdital}/familias/remover/{id}', [FamiliaController::class, 'remover'])
+    ->name('removerFamilia');
+
 Route::get('/inscricao/{idEdital}/familias/adicionar', [FamiliaController::class, 'inicio'])
     ->name('adicionarFamiliaView');
 

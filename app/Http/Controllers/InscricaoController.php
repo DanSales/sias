@@ -90,6 +90,7 @@ class InscricaoController extends Controller
     }
 
     public function confirmacaoView(Request $request){
-        return view('inscricao.inscricaoConfirmacao');
+        $edital = Edital::find($request->idEdital);
+        return view('inscricao.inscricaoConfirmacao', ['edital' =>$edital]);
     }
 }
