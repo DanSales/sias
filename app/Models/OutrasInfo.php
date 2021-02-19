@@ -22,4 +22,9 @@ class OutrasInfo extends Model
         'renda.*' => 'A renda é obrigatória e deve ser numérica',
         'familia_id.*' => 'O id da familia é obrigatório'
     ];
+
+
+    public function familias(){
+        return $this->hasOne('App\Models\Familia');
+    }
 }

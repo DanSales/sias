@@ -18,21 +18,24 @@
                         <th>Data Nascimento</th>
                         <th></th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </thead>
                     <tbody id="lista_estado_casos">
                         @foreach($familias as $familia)
                             <tr>
                                 <td>{{$familia->nome}}</td>
                                 <td>{{$familia->data_nascimento}}</td>
-                                <td class="text-center"><a class="btn btn-warning">Mais informações</a></td>
-                                <td class="text-center"><a class="btn btn-primary" href="{{route('atualizarFamiliaView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Atualizar informações</a></td>
-                                <td class="text-center"><a class="btn btn-danger">Deletar</a></td>
-                                <td class="text-center" ><a class="btn btn-primary" href="{{route('adicionarOutrasInfoView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Adicionar Outras Informações </a></td>
+                                <td class="text-center"><a class="btn btn-primary">Detalhes</a></td>
+                                <td class="text-center"><a class="btn btn-primary" href="{{route('listaOutrasInfoFamiliar', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Outras Informações</a></td>
+                                <td class="text-center"><a class="btn btn-warning" href="{{route('atualizarFamiliaView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Atualizar</a></td>
+                                <td class="text-center"><a class="btn btn-danger" href="{{route('removerFamilia', ['id' => $familia->id, 'idEdital' => $idEdital])}}">Deletar</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+            <a type="button" href="{{route('enviarArquivosView', ['idEdital'=>$idEdital])}}" id="btnProximo" class="btn btn-primary float-right mt-3">Próximo</a>
         </div>
     </div>
 @endsection

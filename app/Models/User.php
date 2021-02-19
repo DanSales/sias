@@ -44,10 +44,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Familia');
     }
+    /*
     public function editals()
     {
         return $this->belongsToMany('App\Models\Edital');
+    }*/
+
+    public function edital_users()
+    {
+        return $this->belongsToMany('App\Models\EditalUser');
     }
+
 
     /**
      * The attributes that are mass assignable.
