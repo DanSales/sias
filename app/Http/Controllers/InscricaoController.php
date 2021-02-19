@@ -90,6 +90,6 @@ class InscricaoController extends Controller
     }
 
     public function confirmacaoView(Request $request){
-
+        return view('inscricao.inscricaoConfirmacao');
     }
 }

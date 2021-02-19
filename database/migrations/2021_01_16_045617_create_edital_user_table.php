@@ -18,6 +18,8 @@ class CreateEditalUserTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('edital_id');
     	    $table->unsignedInteger('user_id');
+    	    $table->string('relato_familiar');
+    	    $table->string('declaracao_rendimento');
     		$table->foreign('edital_id')->references('id')->on('editals');
     		$table->foreign('user_id')->references('id')->on('users');
         });
