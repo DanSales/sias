@@ -33,6 +33,10 @@ class ServidorPolicy
         return \Auth::user()->tipo_usuario == 3;
     }
 
+    public function edit(User $user){
+        return \Auth::user()->tipo_usuario == 3;
+    }
+
     /**
      * Determine whether the user can create models.
      *

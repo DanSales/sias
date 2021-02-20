@@ -23,6 +23,8 @@ class EditalFactory extends Factory
     {
         return [
             'data_edital' => $this->faker->date(),
+            'fim_inscricao' => $this->faker->date(),
+            'data_edital' => $this->faker->date(),
             'numero_edital' => $this->faker->numberBetween(1,1000),
             'arquivo_edital' => $this->faker->file('/tmp',storage_path('app/public/editais/faker'),true),
             'programa_id' => $this->faker->numberBetween(1,15),

@@ -38,6 +38,7 @@
 
 
     <!-- Nav Item - Charts -->
+    @can('edit', \App\Models\Servidor::class)
     <li class="nav-item">
         <a class="nav-link" href="{{route('listPrograma')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -49,6 +50,7 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Editais</span></a>
     </li>
+    @endcan
 
 
 

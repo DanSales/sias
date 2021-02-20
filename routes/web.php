@@ -26,7 +26,14 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'inicio'])->name("homePage");
+Route::get('/', [WelcomeController::class, 'inicio'])
+    ->name("homePage");
+
+Route::get('/editais/tipo/{tipoConsulta}', [WelcomeController::class, 'editaisListWelcome'])
+    ->name('editaisListWelcome');
+
+Route::get('/editais/{idEdital}', [WelcomeController::class, 'editaisViewWelcome'])
+    ->name('editaisViewWelcome');
 
 /*
  * -------------------------------ROTAS PROGRAMA-------------------------------------

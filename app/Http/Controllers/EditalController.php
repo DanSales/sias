@@ -124,7 +124,6 @@ class EditalController extends Controller
 
             $fileAddress = storage_path('app/public/'.$edital->arquivo_edital);
             $file = new UploadedFile($fileAddress, 'file');
-
             $request->files->set('arquivo_edital', $file);
             try {
                 EditalValidator::validate($request->all());
