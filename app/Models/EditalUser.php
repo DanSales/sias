@@ -15,11 +15,11 @@ class EditalUser extends Model
     }
 
     public function editais(){
-        return $this->belongsToMany('App\Models\Edital');
+        return $this->belongsTo('App\Models\Edital','edital_id','id');
     }
 
     public function familias(){
-        return $this->belongsToMany('App\Models\Familia');
+        return $this->belongsToMany('App\Models\Familia', 'edital_user_familia', 'edital_user_id', 'familia_id');
     }
 }
 

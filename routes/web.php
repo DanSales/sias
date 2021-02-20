@@ -207,6 +207,13 @@ Route::get('/inscricao/{idEdital}/confirmacao', [InscricaoController::class, 'co
 Route::get('/inscricao/{idEdital}/finalizacao', [InscricaoController::class, 'finalizarInscricao'])
     ->name('finalizarInscricao');
 
+Route::get('/inscricao/detalhes/{idInscricao}', [InscricaoController::class, 'detalharInscricaoView'])
+    ->name('detalharInscricao');
+
+Route::get('/inscricao/list', [InscricaoController::class, 'listMyInscricoes'])
+    ->name('listMyInscricoes');
+
+
 
 /*
 Route::get('/familias/{id?}/saudes/',[SaudeController::class, 'listar'])
