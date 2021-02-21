@@ -31,11 +31,4 @@ class EditalValidationTest extends TestCase
         EditalValidator::validate($dados);
     }
 
-    public function testCreateEditalSemFile(){
-        $this->expectException(ValidationException::class);
-        $dados = Edital::factory()->make(['arquivo_edital' => ''])->toArray();
-        EditalValidator::validate($dados);
-    }
-
-
 }

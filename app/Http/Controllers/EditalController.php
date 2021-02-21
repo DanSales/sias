@@ -51,8 +51,18 @@ class EditalController extends Controller
                     $edital->save();
                     return redirect('/edital/');
                 }
+                return $this->list();
+            } else{
+                $programas = Programa::all();
+
+                return redirect('/edital/adicionar')
+                    ->with([
+                        '$programas' => $programas
+                    ])
+                    ->withErrors(['arquivo_edital' => 'O arquivo do edital é obrigatório e deve ser um arquivo'])
+                    ->withInput();
             }
-            return $this->list();
+
         } catch (ValidationException $ve){
             $programas = Programa::all();
             return redirect('/edital/adicionar')
