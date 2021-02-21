@@ -96,7 +96,7 @@ Route::get('/edital', [EditalController::class, 'list'])
 /*
  * -------------------------------ROTAS BENEFICIÁRIO-------------------------------------
  * */
-Route::get('/beneficiarios/', [BeneficiarioController::class, 'listar'])
+Route::get('/beneficiarios/{programa_id}', [BeneficiarioController::class, 'listar'])
     ->name('listaBeneficiariosView');
 
 Route::get('/beneficiarios/adicionar', [BeneficiarioController::class, 'inicio'])
@@ -140,6 +140,9 @@ Route::get('/contas/{idConta}/bolsas/', [BolsaController::class, 'listBolsaBenef
 
 Route::get('programa/{idPrograma}/bolsas', [BolsaController::class, 'listBolsasPrograma'])
     ->name('listBolsaPrograma');
+
+Route::post('/beneficiarios/{programa_id}/bolsas/gerar', [BolsaController::class, 'gerarBolsas'])
+    ->name('gerarBolsasBeneficiarios');
 
 Auth::routes();
 

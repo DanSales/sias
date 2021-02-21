@@ -23,6 +23,8 @@
                             @can('create', App\Models\Programa::class)
                                 <th></th>
                                 <th></th>
+                                <th></th>
+                                <th></th>
                             @endcan
 
                         </thead>
@@ -36,6 +38,8 @@
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listBolsaPrograma', ['idPrograma' =>$p->id])}}">Bolsas</a></td>
                                 @endcan
                                 @can('create', App\Models\Programa::class)
+                                    <td class="text-center"><a class="btn btn-primary" href="">Inscritos</a></td>
+                                    <td class="text-center"><a class="btn btn-primary" href="{{route('listaBeneficiariosView', ['programa_id' => $p->id])}}">Beneficiarios</a></td>
                                     <td class="text-center"><a class="btn btn-warning" href="{{route("updatePrograma", ['id'=> $p->id])}}">Atualizar</a></td>
                                     <td class="text-center"><a class="btn btn-danger" href="{{route('deletePrograma', ['id' =>$p->id])}}">Deletar</a></td>
                                 @endcan
@@ -47,4 +51,6 @@
                 </div>
             </div>
         </div>
+
+
     @endsection

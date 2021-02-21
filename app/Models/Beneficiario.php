@@ -18,4 +18,8 @@ class Beneficiario extends Model
     {
         return $this->hasMany('App\Models\Conta');
     }
+
+    public function users(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
