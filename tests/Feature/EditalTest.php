@@ -72,6 +72,8 @@ class EditalTest extends TestCase
             'numero_edital' => $faker->numberBetween(),
             'data_edital' => $faker->date(),
             'programa_id' => 2,
+            'inicio_inscricao' =>$faker->date(),
+            'fim_inscricao'=> $faker->date(),
             '_token' => csrf_token()
         ];
 

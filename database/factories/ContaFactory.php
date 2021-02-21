@@ -28,7 +28,9 @@ class ContaFactory extends Factory
             'tipo_conta' =>$this->faker->numberBetween(1,2),
             'numero_conta' => $this->faker->bankAccountNumber(),
             'ativa' => $this->faker->boolean(),
-            'beneficiario_id' => $this->faker->numberBetween(1,5),
+            'beneficiario_id' => function(){
+                return self::factoryForModel('Beneficiario')->create()->id;
+            },
         ];
     }
 }

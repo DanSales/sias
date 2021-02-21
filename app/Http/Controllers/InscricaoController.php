@@ -8,25 +8,27 @@ use App\Models\EditalUser;
 use App\Models\Programa;
 use App\Validator\CandidatoValidator;
 use App\Validator\ValidationException;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class InscricaoController extends Controller
 {
     public function inscricaoSelectProgramaView(){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao', EditalUser::class);
         $programas = Programa::all();
         return view('inscricao.inscricaoSelectPrograma', ['programas' => $programas]);
     }
 
     public function inscricaoSelectEditalView($idPrograma){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao', EditalUser::class);
         $editais = Edital::where('programa_id', '=', $idPrograma)->get();
         return view('inscricao.inscricaoSelectEdital', ['editais' => $editais] );
     }
 
     public function arquivos(Request $request){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao', EditalUser::class);
         try {
             CandidatoValidator::validate($request->all()+['user_id' => \Auth::user()->id]);
             if (
@@ -85,19 +87,19 @@ class InscricaoController extends Controller
     }
 
     public  function arquivosView(Request $request){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao', EditalUser::class);
         return view('inscricao.inscricaoDeclaracao');
 
     }
 
     public function confirmacaoView(Request $request){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao', EditalUser::class);
         $edital = Edital::find($request->idEdital);
         return view('inscricao.inscricaoConfirmacao', ['edital' =>$edital]);
     }
 
     public function finalizarInscricao(Request $request){
-        $this->authorize('inscricao', Candidato::class);
+        $this->authorize('inscricao',EditalUser::class);
         $inscricao = new EditalUser();
         $inscricao->edital_id = $request->idEdital;
         $inscricao->user_id = Auth::user()->id;
@@ -117,6 +119,27 @@ class InscricaoController extends Controller
         $inscricao->familias()->attach($idsFamiliares);
 
         return redirect('/home');
-
     }
+
+    public function detalharInscricaoView(Request $request){
+        $editalUser = new EditalUser();
+        $editalUser->id = $request->idInscricao;
+        $this->authorize('detalhesInscricao',[$editalUser], EditalUser::class);
+        $editalUser = EditalUser::find($editalUser->id);
+        $user = User::find($editalUser->user_id);
+        return view('inscricao.inscricaoDetalher',
+            [
+                'inscricao' => $editalUser,
+                'user' => $user,
+            ]);
+    }
+
+    public function listMyInscricoes(Request $request){
+        $this->authorize('listInscricoes', EditalUser::class);
+        $inscricoes = EditalUser::where('user_id', '=', \Auth::user()->id)->get();
+        return view('inscricao.inscricaoList', ['inscricoes' => $inscricoes]);
+    }
+
+
+
 }

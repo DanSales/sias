@@ -14,6 +14,13 @@ class ProgramaTest extends TestCase
      *
      * @return void
      */
+    public function testCreatePrograma(){
+        $programa = Programa::factory()->make();
+        $dados = $programa->toArray();
+        ProgramaValidator::validate($dados);
+        $this->assertTrue(true);
+    }
+
     public function testCreateProgramaSemDados(){
         $this->expectException(ValidationException::class);
         $dados = [];
@@ -32,13 +39,5 @@ class ProgramaTest extends TestCase
         $programa = Programa::factory()->make(['valor_beneficio' => '']);
         $dados = $programa->toArray();
         ProgramaValidator::validate($dados);
-    }
-
-    public function testCreatePrograma(){
-        $programa = Programa::factory()->make();
-        $dados = $programa->toArray();
-        ProgramaValidator::validate($dados);
-        Programa::create($dados);
-        $this->assertTrue(true);
     }
 }

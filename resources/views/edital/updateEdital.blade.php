@@ -20,6 +20,25 @@
                     </div>
 
                     <div class="col-12 col-md-6">
+                        <label>Início das inscrições: </label>
+                        <input type="date" value="{{$edital->inicio_inscricao}}" class="form-control" name="inicio_inscricao" @error('inicio_inscricao') is-invalid @enderror" value ="{{ old('inicio_inscricao')}}" required autofocus><br>
+                        @error('inicio_inscricao')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong><br>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label>Fim das inscrições: </label>
+                        <input type="date" value="{{$edital->fim_inscricao}}" class="form-control" name="fim_inscricao" @error('fim_inscricao') is-invalid @enderror" value ="{{ old('fim_inscricao')}}" required autofocus><br>
+                        @error('fim_inscricao')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong><br>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-12 col-md-6">
                         <label>Número do Edital: </label>
                         <input type="text" class="form-control" value="{{$edital->numero_edital}}" name="numero_edital" @error('numero_edital') is-invalid @enderror" value ="{{ old('numero_edital')}}" required autofocus><br>
                         @error('numero_edital')

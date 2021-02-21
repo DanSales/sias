@@ -19,22 +19,38 @@ class BolsaController extends Controller
         $this->authorize('viewBolsaBeneficiario',[$conta], Conta::class);
 
         $user_id = Auth::user()->id;
-        $arraySelect =  [$user_id, $request->idConta];
+        $arraySelect =  [$user_id];
 
-        $bolsasBeneficiario = DB::select('select
-            b.data_pagamento,
-            p.descricao as programa_name,
+        $programas = DB::select('select
             p.id as programa_id,
-            p.valor_beneficio
-        from bolsas b
-            join programas p on b.programa_id = p.id
-            join contas c on c.id = b.conta_id
-            join beneficiarios ben on c.beneficiario_id = ben.id
-            join users u on u.id = ben.user_id
+            p.descricao
+        from edital_users es
+            join editals e on e.id = es.edital_id
+            join programas p on e.programa_id = p.id
+            join users u on u.id = es.user_id
         where u.id = ?
-            AND c.id = ?',$arraySelect);
+            AND es.is_beneficiario = TRUE',$arraySelect);
 
-        return view('bolsa.bolsa', ['bolsas' => $bolsasBeneficiario]);
+        $bolsasPorPrograma = [];
+        foreach ($programas as $p){
+            $bolsasPorPrograma[$p->descricao] = DB::select('
+                select
+                    b.data_pagamento,
+                    p.id as programa_id,
+                    p.valor_beneficio,
+                    u.name as beneficiario,
+                    c.banco
+                from bolsas b
+                    join contas c on c.id = b.conta_id
+                    join beneficiarios ben on c.beneficiario_id = ben.id
+                    join users u on u.id = ben.user_id
+                    join edital_users es on es.user_id = u.id
+                    join editals e on e.id = es.edital_id
+                    join programas p on e.programa_id = p.id
+                where p.id = :programaId',['programaId' => $p->programa_id]);
+        }
+
+        return view('bolsa.bolsa', ['programasBolsas' => $bolsasPorPrograma]);
     }
 
     public function listBolsasPrograma(Request $request){

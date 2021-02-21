@@ -14,6 +14,6 @@ class OutrasInfoSeeder extends Seeder
      */
     public function run()
     {
-        OutrasInfo::factory(100)->create();
+        OutrasInfo::factory(15)->create();
     }
 }

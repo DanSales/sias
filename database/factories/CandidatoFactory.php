@@ -26,7 +26,14 @@ class CandidatoFactory extends Factory
             'relato_familiar' => $this->faker->file('/tmp',storage_path('app/public/inscricao/faker'),false),
             'declaracao_rendimento' => $this->faker->file('/tmp',storage_path('app/public/inscricao/faker'),false),
             'user_id' => function(){
-                return self::factoryForModel('User')->create(['tipo_usuario' => 1])->id;
+                $idUser = self::factoryForModel('User')->create(['tipo_usuario' => 1])->id;
+                for($i = 0; $i < 5; $i++){
+                    $familiar = self::factoryForModel('Familia')->create(['user_id' => $idUser]);
+                    self::factoryForModel('Saude')->create(['familia_id'=>$familiar->id]);
+                }
+
+                return $idUser;
+
             }
         ];
     }

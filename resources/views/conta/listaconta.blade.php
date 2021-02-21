@@ -17,6 +17,7 @@
                         <th>Descrição</th>
                         <th></th>
                         <th></th>
+                        <th></th>
 
                     </thead>
                     <tbody id="lista_estado_casos">

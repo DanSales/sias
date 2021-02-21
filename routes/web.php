@@ -26,7 +26,14 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'inicio'])->name("homePage");
+Route::get('/', [WelcomeController::class, 'inicio'])
+    ->name("homePage");
+
+Route::get('/editais/tipo/{tipoConsulta}', [WelcomeController::class, 'editaisListWelcome'])
+    ->name('editaisListWelcome');
+
+Route::get('/editais/{idEdital}', [WelcomeController::class, 'editaisViewWelcome'])
+    ->name('editaisViewWelcome');
 
 /*
  * -------------------------------ROTAS PROGRAMA-------------------------------------
@@ -206,6 +213,13 @@ Route::get('/inscricao/{idEdital}/confirmacao', [InscricaoController::class, 'co
 
 Route::get('/inscricao/{idEdital}/finalizacao', [InscricaoController::class, 'finalizarInscricao'])
     ->name('finalizarInscricao');
+
+Route::get('/inscricao/detalhes/{idInscricao}', [InscricaoController::class, 'detalharInscricaoView'])
+    ->name('detalharInscricao');
+
+Route::get('/inscricao/list', [InscricaoController::class, 'listMyInscricoes'])
+    ->name('listMyInscricoes');
+
 
 
 /*

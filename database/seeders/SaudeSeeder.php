@@ -14,6 +14,6 @@ class SaudeSeeder extends Seeder
      */
     public function run()
     {
-        Saude::factory(80)->create();
+        Saude::factory(10)->create();
     }
 }

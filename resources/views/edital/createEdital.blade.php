@@ -17,6 +17,24 @@
                         </span>
                         @enderror
                     </div>
+                    <div class="col-12 col-md-6">
+                        <label>Início das inscrições: </label>
+                        <input type="date" class="form-control" name="inicio_inscricao" @error('inicio_inscricao') is-invalid @enderror" value ="{{ old('inicio_inscricao')}}" required autofocus><br>
+                        @error('inicio_inscricao')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong><br>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label>Fim das inscrições: </label>
+                        <input type="date" class="form-control" name="fim_inscricao" @error('fim_inscricao') is-invalid @enderror" value ="{{ old('fim_inscricao')}}" required autofocus><br>
+                        @error('fim_inscricao')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong><br>
+                        </span>
+                        @enderror
+                    </div>
 
                     <div class="col-12 col-md-6">
                         <label>Número do Edital: </label>
