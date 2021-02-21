@@ -20,16 +20,18 @@ class DatabaseSeeder extends Seeder
         $this->call([
             //UserSeeder::class,
             CandidatoSeeder::class,
-            BeneficiarioSeeder::class,
+            //BeneficiarioSeeder::class,
             ProgramaSeeder::class,
             AnexoSeeder::class,
-            FamiliaSeeder::class,
-            OutrasInfoSeeder::class,
-            SaudeSeeder::class,
-            ContaSeeder::class,
-            EditalSeeder::class,
+            //FamiliaSeeder::class,
             BolsaSeeder::class,
             ServidorSeeder::class,
+            OutrasInfoSeeder::class,
+            EditalUserFamiliasSeeder::class,
+            //SaudeSeeder::class,
+            //ContaSeeder::class,
+            //EditalSeeder::class,
+
 
         ]);
     }

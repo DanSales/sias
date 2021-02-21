@@ -56,8 +56,14 @@
                     <a class="dropdown-item" href="{{route('editaisListWelcome',['tipoConsulta' => 2])}}">Encerados</a>
                 </div>
             </div>
+        </li>
 
-
+        <li class="nav-item dropdown no-arrow mx-1 ml-3">
+            <div class="dropdown no-arrow mt-3">
+                <a href="{{route('home')}}" class="btn btn-secondary">
+                    Home
+                </a>
+            </div>
         </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>

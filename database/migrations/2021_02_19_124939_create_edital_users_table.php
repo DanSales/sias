@@ -20,6 +20,8 @@ class CreateEditalUsersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('relato_familiar');
             $table->string('declaracao_rendimento');
+            $table->boolean('is_beneficiario')->default(false);
+            $table->boolean('is_ativo')->default(false);
             $table->foreign('edital_id')->references('id')->on('editals');
             $table->foreign('user_id')->references('id')->on('users');
         });

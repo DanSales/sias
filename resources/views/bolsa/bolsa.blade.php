@@ -4,8 +4,10 @@
 @section('Title', "Bolsas")
 
 @section('main')
+    @foreach( $programasBolsas as $key => $value)
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            {{$key}}
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -13,14 +15,12 @@
                     <thead>
                     <tr class="text-center">
                         <th>Data de Pagamento</th>
-                        <th>Programa</th>
                         <th>Valor</th>
                     </thead>
                     <tbody id="lista_estado_casos">
-                        @foreach($bolsas as $b)
+                            @foreach($value as $b)
                             <tr >
                                 <td>{{$b->data_pagamento}}</td>
-                                <td>{{$b->programa_name}}</td>
                                 <td>{{$b->valor_beneficio}} </td>
                             </tr>
                             @endforeach
@@ -30,4 +30,5 @@
             </div>
         </div>
     </div>
+    @endforeach
 @endsection

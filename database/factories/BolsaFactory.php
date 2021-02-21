@@ -23,8 +23,9 @@ class BolsaFactory extends Factory
     {
         return [
             'data_pagamento' => $this->faker->date(),
-            'conta_id' => $this->faker->numberBetween(1,10),
-            'programa_id' => $this->faker->numberBetween(1,15)
+            'conta_id' => function(){
+                return self::factoryForModel('Conta')->create()->id;
+            },
         ];
     }
 }

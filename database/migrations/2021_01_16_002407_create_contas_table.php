@@ -21,7 +21,7 @@ class CreateContasTable extends Migration
             $table->string("codigo_banco")->nullable(false);
             $table->string("tipo_conta")->nullable(false);
             $table->string("numero_conta")->nullable(false);
-            $table->boolean("ativa")->nullable(false);
+            $table->boolean("ativa")->nullable(false)->default(true);
             $table->unsignedInteger('beneficiario_id');
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
             $table->softDeletes($column = 'deleted_at', $precision = 0);

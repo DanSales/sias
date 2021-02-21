@@ -24,8 +24,7 @@ class OutrasInfoFactory extends Factory
         return [
             'atividade' => $this->faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'),
             'renda' => $this->faker->randomFloat(2,0,100000),
-            'familia_id' => $this->faker->numberBetween(1,80),
-
+            'familia_id' => $this->faker->numberBetween(1,10),
         ];
     }
 }

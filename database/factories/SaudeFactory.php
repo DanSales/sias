@@ -28,7 +28,7 @@ class SaudeFactory extends Factory
             'flag_dificuldade' => $this->faker->boolean(),
             'flag_deficiencia' => $this->faker->boolean(),
             'valor_plano' =>$this->faker->randomFloat(2,0,100000),
-            'familia_id' =>$this->faker->unique(true)->numberBetween(1,80),
+            'familia_id' =>$this->faker->unique(true)->numberBetween(1,10),
         ];
     }
 }

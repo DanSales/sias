@@ -23,7 +23,29 @@ class BeneficiarioFactory extends Factory
     {
         return [
             'user_id' => function(){
-                return self::factoryForModel('User')->create(['tipo_usuario' => 2])->id;
+                $user = self::factoryForModel('User')->create(['tipo_usuario' => 2]);
+                $candidato = self::factoryForModel('Candidato')->create(['user_id' => $user->id]);
+
+                for($i = 0; $i < 5; $i++){
+                    $familiar = self::factoryForModel('Familia')->create(['user_id' => $user->id]);
+                    self::factoryForModel('Saude')->create(['familia_id'=>$familiar->id]);
+                }
+
+                $editalUser = self::factoryForModel('EditalUser')->create(
+                    [
+                        'user_id' => $user->id,
+                        'is_beneficiario' => true,
+                        'is_ativo' => true
+                    ]);
+
+                $idsFamiliares = [];
+                foreach ($user->familias as $f){
+                    $idsFamiliares[] = $f->id;
+                }
+
+                $editalUser->familias()->attach($idsFamiliares);
+
+                return $user->id;
             }
         ];
     }

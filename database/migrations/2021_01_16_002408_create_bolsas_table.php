@@ -19,8 +19,6 @@ class CreateBolsasTable extends Migration
             $table->date("data_pagamento")->nullable(false);
             $table->unsignedInteger('conta_id');
             $table->foreign('conta_id')->references('id')->on('contas');
-            $table->unsignedInteger('programa_id');
-            $table->foreign('programa_id')->references('id')->on('programas');
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 
         });

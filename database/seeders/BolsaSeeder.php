@@ -14,6 +14,6 @@ class BolsaSeeder extends Seeder
      */
     public function run()
     {
-        Bolsa::factory(300)->create();
+        Bolsa::factory(5)->create();
     }
 }
