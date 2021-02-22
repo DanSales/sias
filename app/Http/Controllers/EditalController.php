@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beneficiario;
 use App\Models\Edital;
+use App\Models\EditalUser;
 use App\Models\Programa;
 use App\Validator\EditalValidator;
 use App\Validator\ValidationException;

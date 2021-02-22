@@ -63,22 +63,6 @@
     @endcan
 
 
-    @can('create', \App\Models\Beneficiario::class)
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-angle-double-right"></i>
-            <span>Beneficiário</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('adicionarBeneficiarioView')}}">Adicionar Beneficiário</a>
-                <a class="collapse-item" href="{{route('listaBeneficiariosView')}}">Lista de Beneficiários</a>
-            </div>
-        </div>
-    </li>
-    @endcan
-
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -5,6 +5,7 @@
 @section('main')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            <a class="btn btn-primary"> Gerar Bolsas</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

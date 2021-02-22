@@ -134,6 +134,18 @@ class InscricaoController extends Controller
             ]);
     }
 
+    public function listaInscritos(Request $request){
+        $this->authorize('create', Edital::class);
+        $editalUsers = EditalUser::where('edital_id', '=', $request->idEdital)->get();
+        $edital = Edital::find($request->idEdital);
+        return view('inscricao.inscricaoListServidor',
+            [
+                'edital' => $edital,
+                'editalUser' => $editalUsers
+            ]);
+
+    }
+
     public function listMyInscricoes(Request $request){
         $this->authorize('listInscricoes', EditalUser::class);
         $inscricoes = EditalUser::where('user_id', '=', \Auth::user()->id)->get();

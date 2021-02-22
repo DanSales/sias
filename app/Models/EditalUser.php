@@ -11,7 +11,7 @@ class EditalUser extends Model
     protected $table = 'edital_users';
 
     public function users(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
     public function editais(){
