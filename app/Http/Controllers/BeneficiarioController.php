@@ -17,13 +17,21 @@ class  BeneficiarioController extends Controller
 
 	public function adicionar(Request $request){
 	    $this->authorize("create", \App\Models\Beneficiario::class);
+
 		$beneficiario = new Beneficiario();
-		$beneficiario->user_id = $request->id;
-		$beneficiario->save();
-		$user = User::where('id', '=', $beneficiario->user_id)->first();
-		$user->tipo_usuario = 2;
-		$user->save();
-		return redirect("/beneficiarios/");
+        $beneficiario->user_id = $request->id;
+        $beneficiario->save();
+
+        $user = User::find($request->id);
+        $user->tipo_usuario = 2;
+        $user->update();
+
+		$editalUser = EditalUser::find($request->edital_user_id);
+        $editalUser->is_beneficiario = true;
+        $editalUser->is_ativo = true;
+        $editalUser->update();
+
+		return redirect("/edital/".$editalUser->edital_id."/inscrito");
 
     }
 

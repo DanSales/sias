@@ -19,8 +19,9 @@
                         <th>Arquivo</th>
                         <th>Programa</th>
                         @can('create', App\Models\Edital::class)
-                        <th></th>
-                        <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         @endcan
                     </thead>
                     <tbody id="lista_estado_casos">
@@ -31,8 +32,9 @@
                             <td>{{$e->arquivo_edital}}</td>
                             <td>{{$e->programa->descricao}}</td>
                             @can('create', App\Models\Edital::class)
-                            <td><a class="btn btn-warning" href="{{route('updateEditalView', ['idEdital' => $e->id])}}">Atualizar</a></td>
-                            <td><a class="btn btn-danger" href="{{route('deleteEdital', ['idEdital' => $e->id])}}">Deletar</a></td>
+                                <td><a class="btn btn-primary" href="{{route('listaInscritos', ['idEdital' => $e->id])}}">Inscrições</a></td>
+                                <td><a class="btn btn-warning" href="{{route('updateEditalView', ['idEdital' => $e->id])}}">Atualizar</a></td>
+                                <td><a class="btn btn-danger" href="{{route('deleteEdital', ['idEdital' => $e->id])}}">Deletar</a></td>
                             @endcan
                         </tr>
                     @endforeach

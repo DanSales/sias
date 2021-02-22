@@ -181,10 +181,18 @@
                 </div>
             </div>
         </div>
+        @can('inscricao', App\Models\Candidato::class)
         <div class="card-footer">
             <button class="btn btn-primary">Voltar ao início</button>
-
         </div>
+        @endcan
+
+        @can('create', App\Models\Servidor::class)
+        <div class="card-footer">
+            <a class="btn btn-primary float-right" href="{{route('adicionarBeneficiario', ['id'=> $user->id, 'edital_user_id' => $inscricao->id])}}">Tornar beneficiario</a>
+        </div>
+        @endcan
+
     </div>
 @endsection
 

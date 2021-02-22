@@ -223,6 +223,11 @@ Route::get('/inscricao/detalhes/{idInscricao}', [InscricaoController::class, 'de
 Route::get('/inscricao/list', [InscricaoController::class, 'listMyInscricoes'])
     ->name('listMyInscricoes');
 
+Route::get('/edital/{idEdital}/inscrito/', [InscricaoController::class, 'listaInscritos'])
+    ->name('listaInscritos');
+
+Route::get('/edital/{idEdital}/inscrito/{idInscricao}', [InscricaoController::class, 'detalharInscricaoView'])
+    ->name('detalharEditalInscricao');
 
 
 /*
