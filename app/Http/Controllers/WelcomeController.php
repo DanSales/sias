@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
+use App\Models\Programa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
@@ -35,5 +36,13 @@ class WelcomeController extends Controller
     public function editaisViewWelcome(Request $request){
         $edital = Edital::find($request->idEdital);
         return view('editalDetalhesView', ['edital' => $edital]);
+    }
+    public function programaListWelcome(){
+        $programas = Programa::all();
+        return view('programaListView', ['programas'=>$programas]);
+    }
+    public function ProgramaViewWelcome(Request $request){
+        $programa = Programa::find($request->idPrograma);
+        return view('programaDetalhesView', ['programa'=>$programa]);
     }
 }
