@@ -35,6 +35,11 @@ Route::get('/editais/tipo/{tipoConsulta}', [WelcomeController::class, 'editaisLi
 Route::get('/editais/{idEdital}', [WelcomeController::class, 'editaisViewWelcome'])
     ->name('editaisViewWelcome');
 
+Route::get('/programas/lista', [WelcomeController::class, 'programaListWelcome'])
+    ->name('programasListWelcome');
+
+Route::get('/programas/lista/{idPrograma}', [WelcomeController::class, 'programaViewWelcome'])
+    ->name('programasViewWelcome');
 /*
  * -------------------------------ROTAS PROGRAMA-------------------------------------
  * */

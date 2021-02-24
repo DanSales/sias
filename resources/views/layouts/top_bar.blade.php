@@ -40,7 +40,7 @@
                    Programas
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-                    <a class="dropdown-item" href="#">Lista</a>
+                    <a class="dropdown-item" href="{{route('programasListWelcome')}}">Lista</a>
                 </div>
             </div>
         </li>
