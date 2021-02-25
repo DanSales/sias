@@ -12,6 +12,7 @@ use App\Validator\AnexoValidator;
 class AnexoController extends Controller
 {
     public function createAnexo(Request $request){
+        $this->authorize('create', Anexo::class);
         if ($request->hasFile('caminho_arquivo') && $request->file('caminho_arquivo')->isValid()){
             try {
                 AnexoValidator::validate($request->all());
@@ -61,12 +62,14 @@ class AnexoController extends Controller
     }
 
     public function listAnexos($id){
+        $this->authorize('create', Anexo::class);
         $anexos = Anexo::where('programa_id', '=',$id)->get();
         $programa = Programa::find($id);
         return view('anexos.anexos', ['anexos' => $anexos, 'programa' => $programa]);
     }
 
     public function deleteAnexo(Request $request){
+        $this->authorize('create', Anexo::class);
         $anexo = Anexo::find($request->idAnexo);
         Storage::delete([$anexo->caminho_arquivo]);
         $anexo->delete();

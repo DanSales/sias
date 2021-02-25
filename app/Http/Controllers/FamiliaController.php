@@ -117,10 +117,12 @@ class FamiliaController extends Controller
         $familia = Familia::find($idFamilia);
         $saude = $familia->saudes;
         $this->authorize("update", [$familia], \App\Models\Familia::class);
+
         return view('familia.atualizarfamilia', ['idEdital'=> $idEdital, 'familia' => $familia, 'saude' => $saude]);
     }
     public function atualizar(Request $request, $idEdital,$idFamilia){
         $familia = Familia::find($idFamilia);
+        $this->authorize("update", [$familia], \App\Models\Familia::class);
         $saude = $familia->saudes;
         $idEdital = $request->idEdital;
         $request->request->remove('idEdital');

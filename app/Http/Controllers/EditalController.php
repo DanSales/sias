@@ -22,6 +22,7 @@ class EditalController extends Controller
     }
 
     public  function create(Request $request){
+        $this->authorize('create', Edital::class);
         try {
             EditalValidator::validate($request->all());
             if ($request->hasFile('arquivo_edital') && $request->file('arquivo_edital')->isValid()) {
