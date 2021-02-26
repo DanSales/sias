@@ -26,7 +26,6 @@
                             <tr>
                                 <td>{{$familia->nome}}</td>
                                 <td>{{$familia->data_nascimento}}</td>
-                                <td class="text-center"><a class="btn btn-primary">Detalhes</a></td>
                                 <td class="text-center"><a class="btn btn-primary" href="{{route('listaOutrasInfoFamiliar', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Outras Informações</a></td>
                                 <td class="text-center"><a class="btn btn-warning" href="{{route('atualizarFamiliaView', ['idFamilia' => $familia->id, 'idEdital' => $idEdital])}}">Atualizar</a></td>
                                 <td class="text-center"><a class="btn btn-danger" href="{{route('removerFamilia', ['id' => $familia->id, 'idEdital' => $idEdital])}}">Deletar</a></td>

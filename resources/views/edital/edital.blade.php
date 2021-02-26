@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{$e->data_edital}}</td>
                             <td>{{$e->numero_edital}}</td>
-                            <td>{{$e->arquivo_edital}}</td>
+                            <td><a href="{{ asset('storage/'.$e->arquivo_edital)}}">Documento</a></td>
                             <td>{{$e->programa->descricao}}</td>
                             @can('create', App\Models\Edital::class)
                                 <td><a class="btn btn-primary" href="{{route('listaInscritos', ['idEdital' => $e->id])}}">Inscrições</a></td>

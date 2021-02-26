@@ -47,7 +47,7 @@
 
                     @foreach($anexos as $a)
                         <tr >
-                            <td>{{$a->caminho_arquivo}}</td>
+                            <td><a href="{{ asset('storage/'.$a->caminho_arquivo) }}">Documento</a></td>
                             @can('create', \App\Models\Anexo::class)
                             <td class="text-center"><a class="text-center"><a class="btn btn-danger" href="{{route('deleteAnexo',['id'=>$programa->id, 'idAnexo' => $a->id])}}">Deletar</a></td>
                             @endcan
