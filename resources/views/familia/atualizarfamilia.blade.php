@@ -69,6 +69,7 @@
                     <div class="col-12 col-md-4">
                         <label>Declaracao Autonomo:</label>
                         <input class="form-control-file" type="file" name="declaracao_autonomo" id="arquivo" @error('declaracao_autonomo') is-invalid @enderror" value ="{{$familia->declaracao_autonomo}}"/>
+                        <a href="{{asset('storage/'.$familia->declaracao_autonomo)}}">Documento</a>
                         @error('declaracao_autonomo')
                         <span class="invalid-feedback d-block" role="alert">
         		            <strong>{{$message}}</strong><br>
@@ -79,6 +80,7 @@
                     <div class="col-12 col-md-4">
                         <label>Declaracao Agricultor:</label>
                         <input class="form-control-file" type="file" name="declaracao_agricultor" id="declaracao_agricultor" @error('declaracao_agricultor') is-invalid @enderror" value ="{{ $familia->declaracao_agricultor}}"/><br/>
+                        <a href="{{asset('storage/'.$familia->declaracao_agricultor)}}">Documento</a>
                         @error('declaracao_agricultor')
                         <span class="invalid-feedback d-block" role="alert">
         		            <strong>{{$message}}</strong><br>

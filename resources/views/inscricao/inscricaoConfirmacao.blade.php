@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <label>Arquivo:</label>
-                            <p>{{$edital->arquivo_edital}}</p>
+                            <p><a href="{{ asset('storage/'.$edital->arquivo_edital)}}">Documento</a></p>
                         </div>
                     </div>
                 </div>
@@ -64,11 +64,11 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <label>Relato Familiar:</label>
-                            <p>{{\Auth::user()->candidatos->relato_familiar}}</p>
+                            <p><a href="{{ asset('storage/'.\Auth::user()->candidatos->relato_familiar)}}">Documento</a> </p>
                         </div>
                         <div class="col-12 col-md-4">
                             <label>Declaracão de rendimentos:</label>
-                            <p>{{\Auth::user()->candidatos->declaracao_rendimento}}</p>
+                            <p><a href="{{ asset('storage/'.\Auth::user()->candidatos->declaracao_rendimento)}}">Documento</a> </p>
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                             @if($f->declaracao_autonomo != null)
                             <div class="col-12 col-md-4">
                                 <label>Declaração de autônomo:</label>
-                                <p>{{$f->declaracao_autonomo}}</p>
+                                <p><a href="{{ asset('storage/'.$f->declaracao_autonomo)}}">Documento</a></p>
                             </div>
                             @endif
 
                             @if($f->declaracao_agricultor != null)
                             <div class="col-12 col-md-4">
                                 <label>Declaração de agricultor:</label>
-                                <p>{{$f->declaracao_agricultor}}</p>
+                                <p><a href="{{ asset('storage/'.$f->declaracao_agricultor)}}">Documento</a></p>
                             </div>
                             @endif
 
