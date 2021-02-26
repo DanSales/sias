@@ -19,6 +19,13 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .vertical-center {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
 
 </head>
 
@@ -30,8 +37,11 @@
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block">
-                    <img src="{{url('/img/undraw_profile.svg')}}" alt="Image"/>
+                <div class="col-lg-5 d-none d-lg-block text-center">
+                    <div class="vertical-center ml-5">
+                        <img class="" src="{{url('/img/undraw_profile.svg')}}" alt="Image"/>
+                    </div>
+
                 </div>
                 <div class="col-lg-7">
                     <div class="p-5">
